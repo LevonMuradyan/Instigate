@@ -14,7 +14,7 @@ void init_random_matrices(std::vector<std::bitset<100>>& matrices)
 	auto start = std::chrono::steady_clock::now();
 	size_t dict_size = matrices.size();
 	std::default_random_engine dre(std::random_device{}());
-	std::uniform_int_distribution<long long> dist(0, (1ll << 50));
+	std::uniform_int_distribution<long long> dist(0, (1ll << 50) - 1);
 	for (size_t i = 0; i < dict_size; ++i)
 	{	
 		matrices[i] = dist(dre);
@@ -36,7 +36,7 @@ void read_dict_from_file(const std::string& dictionary_filename, std::vector<std
 	if (file.is_open())
 	{
 		std::string line;
-		int i = 0;
+		size_t i = 0;
 		while (std::getline(file, line))
 		{
 			dictionary[i++] = line;
@@ -47,7 +47,7 @@ void read_dict_from_file(const std::string& dictionary_filename, std::vector<std
 	}
 	else
 	{
-		std::cerr << "Couldn't open " << "dictionary.txt" << " for reading\n";
+		std::cerr << "Couldn't open " << dictionary_filename << " for reading\n";
 	}
 	auto end = std::chrono::steady_clock::now();
 	std::cout << "Elapsed time in milliseconds : "
@@ -71,7 +71,7 @@ void read_from_text_file(const std::string& text_filename, std::vector<std::stri
 			
 			while (pch != NULL)
 			{
-				for (int j = 0; j <= strlen(pch); j++)
+				for (size_t j = 0; j < strlen(pch); j++)
 				{
 					if (pch[j] >= 65 && pch[j] <= 92)
 					{
@@ -88,7 +88,7 @@ void read_from_text_file(const std::string& text_filename, std::vector<std::stri
 	}
 	else
 	{
-		std::cerr << "Couldn't open " << "text.txt" << " for reading\n";
+		std::cerr << "Couldn't open " << text_filename << " for reading\n";
 	}
 
 	auto end = std::chrono::steady_clock::now();
@@ -98,15 +98,26 @@ void read_from_text_file(const std::string& text_filename, std::vector<std::stri
 
 }
 
-void init_hashes(std::vector<size_t>& hashes, const std::hash<std::string>& hasher, 
+void init_hashes(std::vector<size_t>& hashes, const std::hash<std::string>& hasher,
 	const std::vector<std::string>& words)
 {
 	auto start = std::chrono::steady_clock::now();
 	size_t size = hashes.size();
-	for (size_t i = 0; i < size; ++i)
+	if (size == words.size() - 1)
 	{
-		hashes[i] = hasher(words[i]);
+		for (size_t i = 0; i < size; ++i)
+		{
+			hashes[i] = hasher(words[i] + "-" + words[i + 1]);
+		}
 	}
+	else
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			hashes[i] = hasher(words[i]);
+		}
+	}
+	
 	auto end = std::chrono::steady_clock::now();
 	std::cout << "Elapsed time in milliseconds : "
 		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
@@ -160,7 +171,7 @@ void correct_text_hashes(std::vector<size_t>& text_hashes,
 {
 	auto start = std::chrono::steady_clock::now();
 	size_t duplicate_size = duplicates.size();
-	size_t text_size = text.size();
+	size_t text_size = text_hashes.size();
 	for (size_t i = 0; i < duplicates.size(); ++i)
 	{
 		for (size_t j = 0; j < text_size; ++j)
@@ -201,26 +212,32 @@ void hash_function(std::vector<std::pair<size_t, size_t>>& hash_table,
 }
 
 void search_and_calculate_matrices(std::bitset<100>& output,
-	const std::vector<size_t>& text_hashes,
+	const std::vector<size_t>& text_single_term_hashes,
+	const std::vector<size_t>& text_double_term_hashes,
+	const std::vector<size_t>& stop_words_hashes,
 	const std::vector<std::pair<size_t, size_t>>& hash_table,
 	const std::vector<std::bitset<100>>& matrices,
-	const std::vector<std::string>& dictionary)
+	const std::vector<std::string>& dictionary,
+	std::vector<size_t>& words_count)
 {
 	auto start = std::chrono::steady_clock::now();
-	size_t text_size = text_hashes.size();
+	size_t text_size = text_single_term_hashes.size();
 	size_t dict_size = dictionary.size();
 	size_t matrix_size = output.size();
-	for (size_t i = 0; i < text_size; ++i)
+	std::vector<size_t> indexes(text_size);
+
+	for (size_t i = 0; i < text_size - 1; ++i)
 	{
-		size_t index = text_hashes[i] % dict_size;
+		size_t index = text_double_term_hashes[i] % dict_size;
 		for (size_t j = 0; j < dict_size; ++j)
 		{
-			if (hash_table[index].first == text_hashes[i])
-			{				
+			if (hash_table[index].first == text_double_term_hashes[i])
+			{	
+				words_count.push_back(hash_table[index].second);
+				indexes[i] = indexes[i + 1] = 1;
+				//print_bitset_vector(matrices[hash_table[index].second]);
 				output |= matrices[hash_table[index].second];			
-				//std::cout << "The word found = " << dictionary[hash_table[index].second] << std::endl;
-				//print_bitset(matrices[hash_table[index].second]);
-				//std::cout << std::endl;
+				std::cout << "The word found = " << dictionary[hash_table[index].second] << std::endl;
 				break;
 			}
 			else
@@ -229,11 +246,43 @@ void search_and_calculate_matrices(std::bitset<100>& output,
 			}
 		}
 	}
+
+	for (size_t i = 0; i < text_size; ++i)
+	{
+		for (size_t k = 0; k < stop_words_hashes.size(); ++k)
+		{
+			if (stop_words_hashes[k] == text_single_term_hashes[i])
+			{
+				indexes[i] = 1;
+			}
+		}
+		if (!indexes[i])
+		{
+			size_t index = text_single_term_hashes[i] % dict_size;
+			for (size_t j = 0; j < dict_size; ++j)
+			{
+
+				if (hash_table[index].first == text_single_term_hashes[i])
+				{
+					words_count.push_back(hash_table[index].second);
+					//print_bitset_vector(matrices[hash_table[index].second]);
+					output |= matrices[hash_table[index].second];
+					std::cout << "The word found = " << dictionary[hash_table[index].second] << std::endl;
+					break;
+				}
+				else
+				{
+					index = (index + 1) % dict_size;
+				}
+			}
+		}
+	}
 	auto end = std::chrono::steady_clock::now();
 	std::cout << "Elapsed time in milliseconds : "
 		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
 		<< " ms" << "  search_and_calculate_matrices()" << std::endl;
 }
+
 
 
 
@@ -259,11 +308,12 @@ void write_in_file()
 	}
 }
 
-void print_hash_table(const std::vector<std::pair<size_t, size_t>>& hash_table, size_t size = 466547)
+void print_hash_table(const std::vector<std::pair<size_t, size_t>>& hash_table, size_t begin, size_t end)
 {
-	for (size_t i = 0; i < size; ++i)
+	for (size_t i = begin; i < end; ++i)
 	{
-		std::cout << "hash = " << hash_table[i].first << "  index = " << hash_table[i].second << std::endl;
+		//std::cout << "hash = " << hash_table[i].first << "  index = " << hash_table[i].second << std::endl;
+		std::cout << hash_table[i].first << " " << hash_table[i].second << std::endl;
 	}
 }
 
@@ -276,7 +326,7 @@ void print_duplicates(const std::vector<std::vector<size_t>>& duplicates,
 		{
 			if (j == 1)
 			{
-				std::cout << dictionary[duplicates[i][j]] << " ";
+				std::cout << "dictionary[" << duplicates[i][j] << "] = " << dictionary[duplicates[i][j]] << " ";
 			}
 			else
 			{
@@ -330,12 +380,46 @@ void print_bitset(const std::bitset<100>& bitset)
 	}
 }
 
+void print_bitset_vector(const std::bitset<100>& bitset)
+{
+	for (size_t j = 0; j < bitset.size(); ++j)
+	{
+		std::cout << bitset[j];
+	}
+	std::cout << std::endl;
+}
+
 bool contains_duplicates(std::vector<size_t> a)
 {
 	if (a.size() < 2)
 	{
 		return false;
 	}
+	sort(a.begin(), a.end());
+	//std::cout << a[a.size() - 1] << std::endl;
+	//std::cout << a[0] << std::endl;
+	for (int i = 0; i < a.size() - 1; i++)
+	{
+		if (a[i] == a[i + 1])
+		{
+			std::cout << a[i] << std::endl;
+		}
+	}
+	return false;
+}
+
+bool contains_duplicates_h(std::vector<size_t> a)
+{
+	if (a.size() < 2)
+	{
+		return false;
+	}
+
+	for (int i = 0; i < a.size() - 1; i++)
+	{
+		a[i] = a[i] % a.size();
+	}
+
 	sort(a.begin(), a.end());
 	//std::cout << a[a.size() - 1] << std::endl;
 	//std::cout << a[0] << std::endl;
@@ -379,5 +463,22 @@ void read_from_file(const std::string& text_filename, std::string& text)
 	else
 	{
 		std::cerr << "Couldn't open " << "text.txt" << " for reading\n";
+	}
+}
+
+void extract_words_count(std::vector<size_t>& words_count, const std::vector<std::string>& dictionary)
+{
+	std::sort(words_count.begin(), words_count.end());
+	for (size_t i = 0; i < words_count.size() - 1; ++i)
+	{
+		size_t count = 1;
+		while (words_count[i] == words_count[i+1])
+		{
+			++count;
+			++i;
+		}
+		
+		std::cout << dictionary[words_count[i]] << " " << count << std::endl;
+
 	}
 }
