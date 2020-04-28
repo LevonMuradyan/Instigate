@@ -217,8 +217,7 @@ void search_and_calculate_matrices(std::bitset<100>& output,
 	const std::vector<size_t>& stop_words_hashes,
 	const std::vector<std::pair<size_t, size_t>>& hash_table,
 	const std::vector<std::bitset<100>>& matrices,
-	const std::vector<std::string>& dictionary,
-	std::vector<size_t>& words_count)
+	const std::vector<std::string>& dictionary)
 {
 	auto start = std::chrono::steady_clock::now();
 	size_t text_size = text_single_term_hashes.size();
@@ -233,7 +232,6 @@ void search_and_calculate_matrices(std::bitset<100>& output,
 		{
 			if (hash_table[index].first == text_double_term_hashes[i])
 			{	
-				words_count.push_back(hash_table[index].second);
 				indexes[i] = indexes[i + 1] = 1;
 				//print_bitset_vector(matrices[hash_table[index].second]);
 				output |= matrices[hash_table[index].second];			
@@ -264,7 +262,6 @@ void search_and_calculate_matrices(std::bitset<100>& output,
 
 				if (hash_table[index].first == text_single_term_hashes[i])
 				{
-					words_count.push_back(hash_table[index].second);
 					//print_bitset_vector(matrices[hash_table[index].second]);
 					output |= matrices[hash_table[index].second];
 					std::cout << "The word found = " << dictionary[hash_table[index].second] << std::endl;
