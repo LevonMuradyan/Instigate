@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "functions.hpp"
 #include <iostream>
 #include <time.h>
 #include <string.h>
@@ -17,7 +17,7 @@ int main()
 	read_dict_from_file(dictionary_filename, dictionary); // 2s
 	size_t dict_size = dictionary.size();
 
-	const std::string text_filename = "text.txt";	
+	const std::string text_filename = "text1.txt";	
 	std::vector<std::string> text(max_term_size);	
 	read_from_text_file(text_filename, text);
 	size_t text_size = text.size();
@@ -58,7 +58,7 @@ int main()
 	std::bitset<100> output(matrix_size);
 	std::vector<size_t> words_count;
 	search_and_calculate_matrices(output, text_single_term_hashes, text_double_term_hashes, 
-		stop_words_hashes, hash_table, matrices, dictionary, words_count);  // 4.7
+		stop_words_hashes, hash_table, matrices, dictionary);  // 4.7
 
 	//extract_words_count(words_count, dictionary);
 	std::cout << std::endl;

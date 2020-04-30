@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "functions.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -7,6 +7,7 @@
 #include <functional>
 #include <map>
 #include <random>
+#include <string.h>
 #include <chrono>
 
 void init_random_matrices(std::vector<std::bitset<100>>& matrices)
@@ -282,7 +283,36 @@ void search_and_calculate_matrices(std::bitset<100>& output,
 
 
 
+		/*if(i < words_size - 4)
+		{
+			counter = 5;
+		}
+		else if(i >= words_size - 4 &&
+				i < 2 * words_size - 4 - 3)
+		{
+			counter = 4;
+		}
+		else if(i >= 2 * words_size - 4 - 3 &&
+				i < 3 * words_size - 4 - 3 - 2)
+		{
+			counter = 3;
+		}
+		else if(i >= 3 * words_size - 4 - 3 - 2 &&
+				i < 4 * words_size - 4 - 3 - 2 - 1)
+		{
+			counter = 2;
+		}
+		else 
+		{
+			counter = 1;
+		}
 
+		std::string s;
+		for(size_t j = 0; j < counter; ++j)
+		{		
+			s += j? "-" + words[j] : words[j];
+		}
+		hashes[i] = hasher(s);*/
 
 
 
