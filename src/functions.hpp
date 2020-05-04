@@ -4,12 +4,18 @@
 #include <vector>
 #include <string>
 #include <bitset>
+#include <map>
 
 /**
 @file function.hpp
 @brief All functions declarations 
 @author Levon Muradyan
 */
+
+/**
+@brief This function helps in logging level 
+*/
+void init_logging();
 
 /**
 @brief initializing random matrices
@@ -31,7 +37,7 @@ void read_dict_from_file(const std::string& dictionary_filename,
 @param text_filename - the filename that need to be read
 @param text - contain all words in the file 
 */
-void read_from_text_file(const std::string& text_filename, 
+void read_text_from_file(const std::string& text_filename, 
 	std::vector<std::string>& text);
 
 /**
@@ -83,8 +89,10 @@ void hash_function(std::vector<std::pair<size_t,size_t>>& hash_table,
 @param dictionary - conatin all words in dictionary.txt
 */
 void search_and_calculate_matrices(std::bitset<100>& output,
+	std::map<std::string, size_t>& words_count,
 	const std::vector<size_t>& text_single_term_hashes,
 	const std::vector<size_t>& text_double_term_hashes,
+	const std::vector<size_t>& text_triple_term_hashes,
 	const std::vector<size_t>& stop_words_hashes,
 	const std::vector<std::pair<size_t, size_t>>& hash_table,
 	const std::vector<std::bitset<100>>& matrices,
@@ -105,7 +113,7 @@ bool contains_duplicates(std::vector<size_t> a);
 bool contains_duplicates_h(std::vector<size_t> a);
 void init_random_matrices(
 	std::vector<std::vector<size_t>>& matrices);
-void extract_words_count(std::vector<size_t>& words_count, const std::vector<std::string>& dictionary);
+void extract_words_count(const std::map<std::string, size_t>& m);
 #endif // FUNCTIONS_HPP
 
 

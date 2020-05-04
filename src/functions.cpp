@@ -6,9 +6,35 @@
 #include <algorithm>
 #include <functional>
 #include <map>
+#include <set>
 #include <random>
 #include <string.h>
 #include <chrono>
+#include <boost/log/core.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+
+namespace logging = boost::log;
+namespace keywords = boost::log::keywords;
+
+void init_logging()
+{
+    logging::register_simple_formatter_factory<logging::trivial::severity_level, char>("Severity");
+
+    logging::add_file_log(
+        keywords::file_name = "logfile.log",
+        keywords::format = "[%TimeStamp%] [%ThreadID%] [%Severity%] [%ProcessID%] [%LineID%] %Message%"
+    );
+
+    logging::core::get()->set_filter
+    (
+        logging::trivial::severity >= logging::trivial::trace
+    );
+
+    logging::add_common_attributes();
+}
 
 void init_random_matrices(std::vector<std::bitset<100>>& matrices)
 {
@@ -23,10 +49,8 @@ void init_random_matrices(std::vector<std::bitset<100>>& matrices)
 		matrices[i] |= dist(dre);
 	}
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  init_random_matrices()" << std::endl;
-
+	BOOST_LOG_TRIVIAL(debug) << "init_random_matrices()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
 void read_dict_from_file(const std::string& dictionary_filename, std::vector<std::string>& dictionary)
@@ -48,15 +72,15 @@ void read_dict_from_file(const std::string& dictionary_filename, std::vector<std
 	}
 	else
 	{
+		BOOST_LOG_TRIVIAL(error) << "Couldn't open " << dictionary_filename << " for reading";
 		std::cerr << "Couldn't open " << dictionary_filename << " for reading\n";
 	}
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  read_dict_from_file()" << std::endl;
+	BOOST_LOG_TRIVIAL(debug) << "read_dict_from_file()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
-void read_from_text_file(const std::string& text_filename, std::vector<std::string>& text)
+void read_text_from_file(const std::string& text_filename, std::vector<std::string>& text)
 {
 	auto start = std::chrono::steady_clock::now();
 	std::ifstream file(text_filename);
@@ -66,9 +90,21 @@ void read_from_text_file(const std::string& text_filename, std::vector<std::stri
 		size_t i = 0, counter = 0;
 		while (std::getline(file, line))
 		{
+			//std::cout << line << std::endl;
+			//std::cout << line.size() << std::endl;
+			size_t size = line.size();; 
+			if(line[size - 1] < 'A' || line[size - 1] > 'Z' && 
+				line[size - 1] < 'a' || line[size - 1] > 'z')
+			{
+				line.pop_back();
+			}
+				
 			char* str = &line[0];
 			char* pch;
 			pch = strtok(str, " ,.-?");
+
+			//std::cout << line << std::endl;
+			//std::cout << line.size() << std::endl;
 			
 			while (pch != NULL)
 			{
@@ -79,6 +115,9 @@ void read_from_text_file(const std::string& text_filename, std::vector<std::stri
 						pch[j] = pch[j] + 32;
 					}
 				}
+				//std::cout << pch << std::endl;
+				//std::cout << strlen(pch) << std::endl;
+				//std::cout << strlen(pch) << std::endl;
 				text[i++] = pch;
 				pch = strtok(NULL, " ,.-?");
 				counter++;
@@ -89,14 +128,13 @@ void read_from_text_file(const std::string& text_filename, std::vector<std::stri
 	}
 	else
 	{
+		BOOST_LOG_TRIVIAL(error) << "Couldn't open " << text_filename << " for reading";
 		std::cerr << "Couldn't open " << text_filename << " for reading\n";
 	}
 
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  read_from_text_file()" << std::endl;
-
+	BOOST_LOG_TRIVIAL(debug) << "read_from_text_file()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
 void init_hashes(std::vector<size_t>& hashes, const std::hash<std::string>& hasher,
@@ -104,11 +142,21 @@ void init_hashes(std::vector<size_t>& hashes, const std::hash<std::string>& hash
 {
 	auto start = std::chrono::steady_clock::now();
 	size_t size = hashes.size();
-	if (size == words.size() - 1)
+	if (size == words.size() - 2)
 	{
 		for (size_t i = 0; i < size; ++i)
 		{
-			hashes[i] = hasher(words[i] + "-" + words[i + 1]);
+			hashes[i] = hasher(words[i] + "-" + 
+							words[i + 1] + "-" + 
+							words[i + 2]);
+		}
+	}
+	else if (size == words.size() - 1)
+	{
+		for (size_t i = 0; i < size; ++i)
+		{
+			hashes[i] = hasher(words[i] + "-" + 
+							words[i + 1]);
 		}
 	}
 	else
@@ -120,9 +168,8 @@ void init_hashes(std::vector<size_t>& hashes, const std::hash<std::string>& hash
 	}
 	
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  init_hashes()" << std::endl;
+	BOOST_LOG_TRIVIAL(debug) << "init_hashes()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
 void correct_dict_hashes_and_extract_duplicates(
@@ -160,9 +207,8 @@ void correct_dict_hashes_and_extract_duplicates(
 		}
 	}
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  correct_dict_hashes_and_extract_duplicates()" << std::endl;
+	BOOST_LOG_TRIVIAL(debug) << "correct_dict_hashes_and_extract_duplicates()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
 void correct_text_hashes(std::vector<size_t>& text_hashes,
@@ -187,9 +233,8 @@ void correct_text_hashes(std::vector<size_t>& text_hashes,
 		}
 	}
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  correct_text_hashes()" << std::endl;
+	BOOST_LOG_TRIVIAL(debug) << "correct_text_hashes()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
 void hash_function(std::vector<std::pair<size_t, size_t>>& hash_table,
@@ -207,14 +252,15 @@ void hash_function(std::vector<std::pair<size_t, size_t>>& hash_table,
 		hash_table[index] = std::make_pair(hashes[i], i);
 	}
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  hash_function()" << std::endl;
+	BOOST_LOG_TRIVIAL(debug) << "hash_function()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
 void search_and_calculate_matrices(std::bitset<100>& output,
+	std::map<std::string, size_t>& words_count,
 	const std::vector<size_t>& text_single_term_hashes,
 	const std::vector<size_t>& text_double_term_hashes,
+	const std::vector<size_t>& text_triple_term_hashes,
 	const std::vector<size_t>& stop_words_hashes,
 	const std::vector<std::pair<size_t, size_t>>& hash_table,
 	const std::vector<std::bitset<100>>& matrices,
@@ -225,114 +271,79 @@ void search_and_calculate_matrices(std::bitset<100>& output,
 	size_t dict_size = dictionary.size();
 	size_t matrix_size = output.size();
 	std::vector<size_t> indexes(text_size);
-
-	for (size_t i = 0; i < text_size - 1; ++i)
+	std::vector<const std::vector<size_t>*> terms(3);
+	terms[0] = &text_single_term_hashes;
+	terms[1] = &text_double_term_hashes;
+	terms[2] = &text_triple_term_hashes;
+	for(size_t k = 3; k > 0; --k)
 	{
-		size_t index = text_double_term_hashes[i] % dict_size;
-		for (size_t j = 0; j < dict_size; ++j)
+		for (size_t i = 0; i < text_size - k + 1; ++i)
 		{
-			if (hash_table[index].first == text_double_term_hashes[i])
-			{	
-				indexes[i] = indexes[i + 1] = 1;
-				//print_bitset_vector(matrices[hash_table[index].second]);
-				output |= matrices[hash_table[index].second];			
-				std::cout << "The word found = " << dictionary[hash_table[index].second] << std::endl;
-				break;
-			}
-			else
+			bool b = true;
+			for(size_t l = 0; l < k; ++l)
 			{
-				index = (index + 1) % dict_size;
+				if (indexes[i + l])
+				{
+					b = false;
+				}
+			}
+			if(k == 1)
+			{
+				for (size_t l = 0; l < stop_words_hashes.size(); ++l)
+				{
+					if (stop_words_hashes[l] == (*terms[0])[i])
+					{
+						indexes[i] = 1;
+						b = false;
+					}
+				}
+			}
+			if (b)
+			{
+				size_t index = ((*terms[k - 1])[i]) % dict_size;
+				for (size_t j = 0; j < dict_size; ++j)
+				{
+					if (hash_table[index].first == ((*terms[k - 1])[i]))
+					{	
+						for(size_t l = 0; l < k; ++l)
+						{
+							indexes[i + l] = 1;
+						}
+						output |= matrices[hash_table[index].second];
+						size_t& value =	words_count[dictionary[hash_table[index].second]];
+						value? value++ : value = 1;	
+						break;
+					}
+					else
+					{
+						index = (index + 1) % dict_size;
+					}
+				}
 			}
 		}
 	}
 
-	for (size_t i = 0; i < text_size; ++i)
-	{
-		for (size_t k = 0; k < stop_words_hashes.size(); ++k)
-		{
-			if (stop_words_hashes[k] == text_single_term_hashes[i])
-			{
-				indexes[i] = 1;
-			}
-		}
-		if (!indexes[i])
-		{
-			size_t index = text_single_term_hashes[i] % dict_size;
-			for (size_t j = 0; j < dict_size; ++j)
-			{
-
-				if (hash_table[index].first == text_single_term_hashes[i])
-				{
-					//print_bitset_vector(matrices[hash_table[index].second]);
-					output |= matrices[hash_table[index].second];
-					std::cout << "The word found = " << dictionary[hash_table[index].second] << std::endl;
-					break;
-				}
-				else
-				{
-					index = (index + 1) % dict_size;
-				}
-			}
-		}
-	}
 	auto end = std::chrono::steady_clock::now();
-	std::cout << "Elapsed time in milliseconds : "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-		<< " ms" << "  search_and_calculate_matrices()" << std::endl;
+	BOOST_LOG_TRIVIAL(debug) << "search_and_calculate_matrices()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
 
-
-
-		/*if(i < words_size - 4)
-		{
-			counter = 5;
-		}
-		else if(i >= words_size - 4 &&
-				i < 2 * words_size - 4 - 3)
-		{
-			counter = 4;
-		}
-		else if(i >= 2 * words_size - 4 - 3 &&
-				i < 3 * words_size - 4 - 3 - 2)
-		{
-			counter = 3;
-		}
-		else if(i >= 3 * words_size - 4 - 3 - 2 &&
-				i < 4 * words_size - 4 - 3 - 2 - 1)
-		{
-			counter = 2;
-		}
-		else 
-		{
-			counter = 1;
-		}
-
-		std::string s;
-		for(size_t j = 0; j < counter; ++j)
-		{		
-			s += j? "-" + words[j] : words[j];
-		}
-		hashes[i] = hasher(s);*/
-
-
-
-
-
-
-
-
-
-
-
-
-void write_in_file()
+void extract_words_count(const std::map<std::string, size_t>& m)
 {
-	std::string str;
-	std::ifstream in("words.txt");
-	while (std::getline(in, str))
+	typedef std::function<bool(std::pair<std::string, int>, std::pair<std::string, int>)> Comparator;
+
+	Comparator compFunctor = [](std::pair<std::string, size_t> elem1 ,std::pair<std::string, size_t> elem2)
 	{
-		std::cout << str << std::endl;
-	}
+		return elem1.second > elem2.second;
+	};
+
+	std::set<std::pair<std::string, int>, Comparator> setOfWords(
+			m.begin(), m.end(), compFunctor);
+
+	// Iterate over a set using range base for loop
+	// It will display the items in sorted order of values
+	for (std::pair<std::string, int> element : setOfWords)
+		BOOST_LOG_TRIVIAL(info) << element.first << " :: " << element.second;
 }
 
 void print_hash_table(const std::vector<std::pair<size_t, size_t>>& hash_table, size_t begin, size_t end)
@@ -493,19 +504,3 @@ void read_from_file(const std::string& text_filename, std::string& text)
 	}
 }
 
-void extract_words_count(std::vector<size_t>& words_count, const std::vector<std::string>& dictionary)
-{
-	std::sort(words_count.begin(), words_count.end());
-	for (size_t i = 0; i < words_count.size() - 1; ++i)
-	{
-		size_t count = 1;
-		while (words_count[i] == words_count[i+1])
-		{
-			++count;
-			++i;
-		}
-		
-		std::cout << dictionary[words_count[i]] << " " << count << std::endl;
-
-	}
-}
