@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(read_dict_from_file_test)
 {
     read_dict_from_file(dictionary_filename, dictionary);
     dict_size = dictionary.size(); 
-    BOOST_CHECK_LE( dict_size, max_dict_size);
+    BOOST_REQUIRE_LE( dict_size, max_dict_size);
     for(size_t i = 0; i < dict_size; ++i)
     {
         BOOST_CHECK_NE(dictionary[i].size(), 0);
@@ -67,7 +67,7 @@ BOOST_AUTO_TEST_CASE(read_text_from_file_test)
 {
     read_text_from_file(text_filename, text);
     text_size = text.size();      
-    BOOST_CHECK_LE( text_size, max_term_size);
+    BOOST_REQUIRE_LE( text_size, max_term_size);
     for(size_t i = 0; i < text_size; ++i)
     {
         BOOST_CHECK_NE(text[i].size(), 0);
@@ -83,7 +83,7 @@ BOOST_AUTO_TEST_CASE(read_text_from_file_test)
 
     read_text_from_file(stop_words_filename, stop_words);
     stop_words_size = stop_words.size();
-    BOOST_CHECK_LE( stop_words_size, max_term_size);
+    BOOST_REQUIRE_LE( stop_words_size, max_term_size);
     for(size_t i = 0; i < stop_words_size; ++i)
     {
         BOOST_CHECK_NE(stop_words[i].size(), 0);

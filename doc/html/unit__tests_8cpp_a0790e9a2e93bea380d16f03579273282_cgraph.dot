@@ -1,0 +1,12 @@
+digraph "BOOST_AUTO_TEST_CASE"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="BOOST_AUTO_TEST_CASE",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="dictionary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit__tests_8cpp.html#a8e62ff9efe3f1871f8d8092954e59d9b"];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="read_dict_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$functions_8cpp.html#a321c9c67e522b8c2f10487e4285f6f66",tooltip="reading dictionary from file "];
+}

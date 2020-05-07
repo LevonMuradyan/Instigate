@@ -1,0 +1,978 @@
+\hypertarget{functions_8cpp}{}\section{src/functions.cpp File Reference}
+\label{functions_8cpp}\index{src/functions.\+cpp@{src/functions.\+cpp}}
+{\ttfamily \#include \char`\"{}functions.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$boost/log/core.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/log/trivial.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/log/expressions.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/log/utility/setup/file.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/log/utility/setup/common\+\_\+attributes.\+hpp$>$}\newline
+Include dependency graph for functions.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{functions_8cpp_ad8bf2ebe714bdb6a1e216ed7d9efa7a3}{init\+\_\+logging} ()
+\begin{DoxyCompactList}\small\item\em This function helps in logging level. \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_ace0d8a491c04e095dfdc122519e95531}{init\+\_\+random\+\_\+matrices} (std\+::vector$<$ std\+::bitset$<$ 100 $>$$>$ \&\hyperlink{unit__tests_8cpp_af1bccb24e1ec3f0ac4cf0b2ba66dba10}{matrices})
+\begin{DoxyCompactList}\small\item\em initializing random matrices \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_a321c9c67e522b8c2f10487e4285f6f66}{read\+\_\+dict\+\_\+from\+\_\+file} (const std\+::string \&\hyperlink{unit__tests_8cpp_a07994a2cff826e3e1dadfcacfc3a6c34}{dictionary\+\_\+filename}, std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary})
+\begin{DoxyCompactList}\small\item\em reading dictionary from file \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_abcc4850712656eae12ab9ef71201cc4b}{read\+\_\+text\+\_\+from\+\_\+file} (const std\+::string \&\hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\+\_\+filename}, std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text})
+\begin{DoxyCompactList}\small\item\em reading input text, stop words from file \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}{init\+\_\+hashes} (std\+::vector$<$ size\+\_\+t $>$ \&hashes, const std\+::hash$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a048651fb762065e42e0b8f9b44373caf}{hasher}, const std\+::vector$<$ std\+::string $>$ \&words)
+\begin{DoxyCompactList}\small\item\em calculating hashes of words stored in words \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_aacafc21762cbc40b57fc4c4012558a6b}{correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates} (std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_ae76a3776f5072a97a3ef52324fb549b8}{duplicates}, std\+::vector$<$ size\+\_\+t $>$ \&hashes)
+\begin{DoxyCompactList}\small\item\em finding duplicates and correcting dictionary hashes \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_aa0cfb78bb344542605bbea5234600757}{correct\+\_\+text\+\_\+hashes} (std\+::vector$<$ size\+\_\+t $>$ \&text\+\_\+hashes, const std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text}, const std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_ae76a3776f5072a97a3ef52324fb549b8}{duplicates}, const std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary})
+\begin{DoxyCompactList}\small\item\em correcting input text hashes, maybe there are duplicates \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_add7071b5bf6c35ebe7a72c1568efb48a}{hash\+\_\+function} (std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_a47d1ef48124afb3373728ff2e99a1bf0}{hash\+\_\+table}, const std\+::vector$<$ size\+\_\+t $>$ \&hashes)
+\begin{DoxyCompactList}\small\item\em hashing open adressing with linear probbing algorithm \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_a4a824c898b9d4a6b51237f1ecd3c0d72}{search\+\_\+and\+\_\+calculate\+\_\+matrices} (std\+::bitset$<$ 100 $>$ \&\hyperlink{unit__tests_8cpp_a17862d4ba768df159c2c87deec29808a}{output}, std\+::map$<$ std\+::string, size\+\_\+t $>$ \&\hyperlink{unit__tests_8cpp_ac7d6b29854e89c01f1b2e5dc876306e4}{words\+\_\+count}, const std\+::vector$<$ size\+\_\+t $>$ \&\hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\+\_\+single\+\_\+term\+\_\+hashes}, const std\+::vector$<$ size\+\_\+t $>$ \&\hyperlink{unit__tests_8cpp_adc8040ff5013b6062f2f6889fa639f86}{text\+\_\+double\+\_\+term\+\_\+hashes}, const std\+::vector$<$ size\+\_\+t $>$ \&\hyperlink{unit__tests_8cpp_a0528581581836f462ed3f5733654b32b}{text\+\_\+triple\+\_\+term\+\_\+hashes}, const std\+::vector$<$ size\+\_\+t $>$ \&\hyperlink{unit__tests_8cpp_ac7f4e93c08d879f3b08ab091dc8bfa85}{stop\+\_\+words\+\_\+hashes}, const std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_a47d1ef48124afb3373728ff2e99a1bf0}{hash\+\_\+table}, const std\+::vector$<$ std\+::bitset$<$ 100 $>$$>$ \&\hyperlink{unit__tests_8cpp_af1bccb24e1ec3f0ac4cf0b2ba66dba10}{matrices}, const std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary})
+\begin{DoxyCompactList}\small\item\em correcting input text hashes, maybe there are duplicates \end{DoxyCompactList}\item 
+void \hyperlink{functions_8cpp_acdee8ced740bddc4318c521d54b997c5}{extract\+\_\+words\+\_\+count} (const std\+::map$<$ std\+::string, size\+\_\+t $>$ \&m)
+\item 
+void \hyperlink{functions_8cpp_ab82a88a72180e73417bd67636c93c42a}{print\+\_\+hash\+\_\+table} (const std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_a47d1ef48124afb3373728ff2e99a1bf0}{hash\+\_\+table}, size\+\_\+t begin, size\+\_\+t end)
+\item 
+void \hyperlink{functions_8cpp_ab4905a023f709c16fbc823f45ce38249}{print\+\_\+duplicates} (const std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_ae76a3776f5072a97a3ef52324fb549b8}{duplicates}, const std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary})
+\item 
+void \hyperlink{functions_8cpp_a6c972752b24c089c02b2cbabbfeaf0aa}{print\+\_\+matrix} (const std\+::vector$<$ size\+\_\+t $>$ \&matrix)
+\item 
+void \hyperlink{functions_8cpp_af117b4f34c0df6b1f2ecad301d3a0b07}{print\+\_\+words} (const std\+::vector$<$ std\+::string $>$ \&\hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary})
+\item 
+void \hyperlink{functions_8cpp_ac2abf70b2a28033630e3294656126151}{print\+\_\+vector} (const std\+::vector$<$ size\+\_\+t $>$ \&vector)
+\item 
+void \hyperlink{functions_8cpp_a6ef29583ec524822ced473e1afdae62d}{print\+\_\+bitset} (const std\+::bitset$<$ 100 $>$ \&bitset)
+\item 
+void \hyperlink{functions_8cpp_a44f3755ad3e3372f6a6a80af6320b1eb}{print\+\_\+bitset\+\_\+vector} (const std\+::bitset$<$ 100 $>$ \&bitset)
+\item 
+bool \hyperlink{functions_8cpp_a5c7d33f6dcca0c72c599c96180340850}{contains\+\_\+duplicates} (std\+::vector$<$ size\+\_\+t $>$ a)
+\item 
+bool \hyperlink{functions_8cpp_a008e5f15914503e469b75b075ff22957}{contains\+\_\+duplicates\+\_\+h} (std\+::vector$<$ size\+\_\+t $>$ a)
+\item 
+void \hyperlink{functions_8cpp_a0bb307c8bd11a2156dfefce6da985349}{init\+\_\+random\+\_\+matrices} (std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&\hyperlink{unit__tests_8cpp_af1bccb24e1ec3f0ac4cf0b2ba66dba10}{matrices})
+\item 
+void \hyperlink{functions_8cpp_acf60c5afe7fc9c288fe822c89658c717}{read\+\_\+from\+\_\+file} (const std\+::string \&\hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\+\_\+filename}, std\+::string \&\hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{functions_8cpp_a5c7d33f6dcca0c72c599c96180340850}\label{functions_8cpp_a5c7d33f6dcca0c72c599c96180340850}} 
+\index{functions.\+cpp@{functions.\+cpp}!contains\+\_\+duplicates@{contains\+\_\+duplicates}}
+\index{contains\+\_\+duplicates@{contains\+\_\+duplicates}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{contains\+\_\+duplicates()}{contains\_duplicates()}}
+{\footnotesize\ttfamily bool contains\+\_\+duplicates (\begin{DoxyParamCaption}\item[{std\+::vector$<$ size\+\_\+t $>$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 426 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+427 \{
+428     \textcolor{keywordflow}{if} (a.size() < 2)
+429     \{
+430         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+431     \}
+432     sort(a.begin(), a.end());
+433     \textcolor{comment}{//std::cout << a[a.size() - 1] << std::endl;}
+434     \textcolor{comment}{//std::cout << a[0] << std::endl;}
+435     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < a.size() - 1; i++)
+436     \{
+437         \textcolor{keywordflow}{if} (a[i] == a[i + 1])
+438         \{
+439             std::cout << a[i] << std::endl;
+440         \}
+441     \}
+442     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+443 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_a008e5f15914503e469b75b075ff22957}\label{functions_8cpp_a008e5f15914503e469b75b075ff22957}} 
+\index{functions.\+cpp@{functions.\+cpp}!contains\+\_\+duplicates\+\_\+h@{contains\+\_\+duplicates\+\_\+h}}
+\index{contains\+\_\+duplicates\+\_\+h@{contains\+\_\+duplicates\+\_\+h}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{contains\+\_\+duplicates\+\_\+h()}{contains\_duplicates\_h()}}
+{\footnotesize\ttfamily bool contains\+\_\+duplicates\+\_\+h (\begin{DoxyParamCaption}\item[{std\+::vector$<$ size\+\_\+t $>$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 445 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+446 \{
+447     \textcolor{keywordflow}{if} (a.size() < 2)
+448     \{
+449         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+450     \}
+451 
+452     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < a.size() - 1; i++)
+453     \{
+454         a[i] = a[i] % a.size();
+455     \}
+456 
+457     sort(a.begin(), a.end());
+458     \textcolor{comment}{//std::cout << a[a.size() - 1] << std::endl;}
+459     \textcolor{comment}{//std::cout << a[0] << std::endl;}
+460     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < a.size() - 1; i++)
+461     \{
+462         \textcolor{keywordflow}{if} (a[i] == a[i + 1])
+463         \{
+464             std::cout << a[i] << std::endl;
+465         \}
+466     \}
+467     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+468 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_aacafc21762cbc40b57fc4c4012558a6b}\label{functions_8cpp_aacafc21762cbc40b57fc4c4012558a6b}} 
+\index{functions.\+cpp@{functions.\+cpp}!correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates@{correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates}}
+\index{correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates@{correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates()}{correct\_dict\_hashes\_and\_extract\_duplicates()}}
+{\footnotesize\ttfamily void correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&}]{duplicates,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{hashes }\end{DoxyParamCaption})}
+
+
+
+finding duplicates and correcting dictionary hashes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duplicates} & -\/ contain words old hashes, indexes to the words with that hashes, and new hashes \\
+\hline
+{\em hashes} & -\/ hash of dictionary, contain hashed strings of each word in dictionary \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 171 of file functions.\+cpp.
+
+
+
+References duplicates.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+174 \{
+175     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+176     \textcolor{keywordtype}{size\_t} size = hashes.size();
+177     std::map<size\_t, size\_t> m;
+178 
+179     \textcolor{keywordflow}{if} (size < 2)
+180     \{
+181         \textcolor{keywordflow}{return};
+182     \}
+183 
+184     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; ++i)
+185     \{
+186         m[hashes[i]] = 0;
+187     \}
+188     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; ++i)
+189     \{
+190         \textcolor{keywordflow}{if} (m[hashes[i]])
+191         \{
+192             \textcolor{keywordtype}{size\_t} temp = hashes[i];
+193             \textcolor{keywordflow}{while} (m[temp])
+194             \{
+195                 temp++;
+196             \}
+197             duplicates.push\_back(\{ hashes[i], i, temp \});
+198             hashes[i] = temp;
+199         \}
+200         \textcolor{keywordflow}{else}
+201         \{
+202             m[hashes[i]] = 1;
+203         \}
+204     \}
+205     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+206     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"correct\_dict\_hashes\_and\_extract\_duplicates()  "}
+207         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+208 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{functions_8cpp_aa0cfb78bb344542605bbea5234600757}\label{functions_8cpp_aa0cfb78bb344542605bbea5234600757}} 
+\index{functions.\+cpp@{functions.\+cpp}!correct\+\_\+text\+\_\+hashes@{correct\+\_\+text\+\_\+hashes}}
+\index{correct\+\_\+text\+\_\+hashes@{correct\+\_\+text\+\_\+hashes}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{correct\+\_\+text\+\_\+hashes()}{correct\_text\_hashes()}}
+{\footnotesize\ttfamily void correct\+\_\+text\+\_\+hashes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{text\+\_\+hashes,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{text,  }\item[{const std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&}]{duplicates,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+correcting input text hashes, maybe there are duplicates 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+\_\+hashes} & -\/ hash of text, contain hashed strings of each word in text \\
+\hline
+{\em text} & -\/ contain all words in input text(maximum 500terms) \\
+\hline
+{\em duplicates} & -\/ contain words old hashes, indexes to the words with that hashes, and new hashes \\
+\hline
+{\em dictionary} & -\/ conatin all words in dictionary.\+txt \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 210 of file functions.\+cpp.
+
+
+
+References duplicates, and text\+\_\+size.
+
+
+
+Referenced by main().
+
+
+\begin{DoxyCode}
+214 \{
+215     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+216     \textcolor{keywordtype}{size\_t} duplicate\_size = duplicates.size();
+217     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4d97bea555c903d47be884ea10dcd77a}{text\_size} = text\_hashes.size();
+218     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < duplicates.size(); ++i)
+219     \{
+220         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < \hyperlink{unit__tests_8cpp_a4d97bea555c903d47be884ea10dcd77a}{text\_size}; ++j)
+221         \{
+222             \textcolor{keywordflow}{if} (text\_hashes[j] == duplicates[i][0])
+223             \{
+224                 \textcolor{keywordflow}{if} (text[j] == dictionary[duplicates[i][1]])
+225                 \{
+226                     text\_hashes[j] = duplicates[i][2];
+227                 \}
+228             \}
+229         \}
+230     \}
+231     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+232     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"correct\_text\_hashes()  "}
+233         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+234 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{functions_8cpp_acdee8ced740bddc4318c521d54b997c5}\label{functions_8cpp_acdee8ced740bddc4318c521d54b997c5}} 
+\index{functions.\+cpp@{functions.\+cpp}!extract\+\_\+words\+\_\+count@{extract\+\_\+words\+\_\+count}}
+\index{extract\+\_\+words\+\_\+count@{extract\+\_\+words\+\_\+count}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{extract\+\_\+words\+\_\+count()}{extract\_words\_count()}}
+{\footnotesize\ttfamily void extract\+\_\+words\+\_\+count (\begin{DoxyParamCaption}\item[{const std\+::map$<$ std\+::string, size\+\_\+t $>$ \&}]{m }\end{DoxyParamCaption})}
+
+
+
+Definition at line 327 of file functions.\+cpp.
+
+
+
+Referenced by main().
+
+
+\begin{DoxyCode}
+328 \{
+329     \textcolor{keyword}{typedef} std::function<bool(std::pair<std::string, int>, std::pair<std::string, int>)> Comparator;
+330 
+331     Comparator compFunctor = [](std::pair<std::string, size\_t> elem1 ,std::pair<std::string, size\_t> elem2)
+332     \{
+333         \textcolor{keywordflow}{return} elem1.second > elem2.second;
+334     \};
+335 
+336     std::set<std::pair<std::string, int>, Comparator> setOfWords(
+337             m.begin(), m.end(), compFunctor);
+338 
+339     \textcolor{comment}{// Iterate over a set using range base for loop}
+340     \textcolor{comment}{// It will display the items in sorted order of values}
+341     \textcolor{keywordflow}{for} (std::pair<std::string, int> element : setOfWords)
+342         BOOST\_LOG\_TRIVIAL(info) << element.first << \textcolor{stringliteral}{" :: "} << element.second;
+343 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{functions_8cpp_add7071b5bf6c35ebe7a72c1568efb48a}\label{functions_8cpp_add7071b5bf6c35ebe7a72c1568efb48a}} 
+\index{functions.\+cpp@{functions.\+cpp}!hash\+\_\+function@{hash\+\_\+function}}
+\index{hash\+\_\+function@{hash\+\_\+function}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{hash\+\_\+function()}{hash\_function()}}
+{\footnotesize\ttfamily void hash\+\_\+function (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$$>$ \&}]{hash\+\_\+table,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{hashes }\end{DoxyParamCaption})}
+
+
+
+hashing open adressing with linear probbing algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash\+\_\+table} & -\/ hash table contain hashes and indexes to the words in dictionary \\
+\hline
+{\em hashes} & -\/ hash of dictionary, contain hashed strings of each word in dictionary \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 236 of file functions.\+cpp.
+
+
+
+References hash\+\_\+table(), and words\+\_\+count.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+238 \{
+239     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+240     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_ac7d6b29854e89c01f1b2e5dc876306e4}{words\_count} = hashes.size();
+241     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < \hyperlink{unit__tests_8cpp_ac7d6b29854e89c01f1b2e5dc876306e4}{words\_count}; ++i)
+242     \{
+243         \textcolor{keywordtype}{size\_t} index = hashes[i] % \hyperlink{unit__tests_8cpp_ac7d6b29854e89c01f1b2e5dc876306e4}{words\_count};
+244         \textcolor{keywordflow}{while} (hash\_table[index].first)
+245         \{
+246             index = (index + 1) % words\_count;
+247         \}
+248         hash\_table[index] = std::make\_pair(hashes[i], i);
+249     \}
+250     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+251     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"hash\_function()  "}
+252         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+253 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}\label{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}} 
+\index{functions.\+cpp@{functions.\+cpp}!init\+\_\+hashes@{init\+\_\+hashes}}
+\index{init\+\_\+hashes@{init\+\_\+hashes}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{init\+\_\+hashes()}{init\_hashes()}}
+{\footnotesize\ttfamily void init\+\_\+hashes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{hashes,  }\item[{const std\+::hash$<$ std\+::string $>$ \&}]{hasher,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{words }\end{DoxyParamCaption})}
+
+
+
+calculating hashes of words stored in words 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hasher} & -\/ object that hashes words \\
+\hline
+{\em words} & -\/ all words that need to be hashed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 136 of file functions.\+cpp.
+
+
+
+References hasher.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+138 \{
+139     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+140     \textcolor{keywordtype}{size\_t} size = hashes.size();
+141     \textcolor{keywordflow}{if} (size == words.size() - 2)
+142     \{
+143         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; ++i)
+144         \{
+145             hashes[i] = \hyperlink{unit__tests_8cpp_a048651fb762065e42e0b8f9b44373caf}{hasher}(words[i] + \textcolor{stringliteral}{"-"} + 
+146                             words[i + 1] + \textcolor{stringliteral}{"-"} + 
+147                             words[i + 2]);
+148         \}
+149     \}
+150     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (size == words.size() - 1)
+151     \{
+152         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; ++i)
+153         \{
+154             hashes[i] = \hyperlink{unit__tests_8cpp_a048651fb762065e42e0b8f9b44373caf}{hasher}(words[i] + \textcolor{stringliteral}{"-"} + 
+155                             words[i + 1]);
+156         \}
+157     \}
+158     \textcolor{keywordflow}{else}
+159     \{
+160         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; ++i)
+161         \{
+162             hashes[i] = \hyperlink{unit__tests_8cpp_a048651fb762065e42e0b8f9b44373caf}{hasher}(words[i]);
+163         \}
+164     \}
+165     
+166     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+167     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"init\_hashes()  "}
+168         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+169 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{functions_8cpp_ad8bf2ebe714bdb6a1e216ed7d9efa7a3}\label{functions_8cpp_ad8bf2ebe714bdb6a1e216ed7d9efa7a3}} 
+\index{functions.\+cpp@{functions.\+cpp}!init\+\_\+logging@{init\+\_\+logging}}
+\index{init\+\_\+logging@{init\+\_\+logging}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{init\+\_\+logging()}{init\_logging()}}
+{\footnotesize\ttfamily void init\+\_\+logging (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function helps in logging level. 
+
+
+
+Definition at line 22 of file functions.\+cpp.
+
+
+
+Referenced by main().
+
+
+\begin{DoxyCode}
+23 \{
+24     logging::register\_simple\_formatter\_factory<logging::trivial::severity\_level, char>(\textcolor{stringliteral}{"Severity"});
+25 
+26     logging::add\_file\_log(
+27         keywords::file\_name = \textcolor{stringliteral}{"logfile.log"},
+28         keywords::format = \textcolor{stringliteral}{"[%TimeStamp%] [%ThreadID%] [%Severity%] [%ProcessID%] [%LineID%] %Message%"}
+29     );
+30 
+31     logging::core::get()->set\_filter
+32     (
+33         logging::trivial::severity >= logging::trivial::trace
+34     );
+35 
+36     logging::add\_common\_attributes();
+37 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{functions_8cpp_ace0d8a491c04e095dfdc122519e95531}\label{functions_8cpp_ace0d8a491c04e095dfdc122519e95531}} 
+\index{functions.\+cpp@{functions.\+cpp}!init\+\_\+random\+\_\+matrices@{init\+\_\+random\+\_\+matrices}}
+\index{init\+\_\+random\+\_\+matrices@{init\+\_\+random\+\_\+matrices}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{init\+\_\+random\+\_\+matrices()}{init\_random\_matrices()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void init\+\_\+random\+\_\+matrices (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::bitset$<$ 100 $>$$>$ \&}]{matrices }\end{DoxyParamCaption})}
+
+
+
+initializing random matrices 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrices} & -\/ vector of bitsets, contain all initialized matrices of length 100 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 39 of file functions.\+cpp.
+
+
+
+References dict\+\_\+size, and matrices().
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+40 \{
+41     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+42     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size} = matrices.size();
+43     std::default\_random\_engine dre(std::random\_device\{\}());
+44     std::uniform\_int\_distribution<long long> dist(0, (1ll << 50) - 1);
+45     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size}; ++i)
+46     \{   
+47         matrices[i] = dist(dre);
+48         matrices[i] <<= 50;
+49         matrices[i] |= dist(dre);
+50     \}
+51     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+52     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"init\_random\_matrices()  "}
+53         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+54 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{functions_8cpp_a0bb307c8bd11a2156dfefce6da985349}\label{functions_8cpp_a0bb307c8bd11a2156dfefce6da985349}} 
+\index{functions.\+cpp@{functions.\+cpp}!init\+\_\+random\+\_\+matrices@{init\+\_\+random\+\_\+matrices}}
+\index{init\+\_\+random\+\_\+matrices@{init\+\_\+random\+\_\+matrices}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{init\+\_\+random\+\_\+matrices()}{init\_random\_matrices()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void init\+\_\+random\+\_\+matrices (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&}]{matrices }\end{DoxyParamCaption})}
+
+
+
+Definition at line 470 of file functions.\+cpp.
+
+
+
+References dict\+\_\+size, matrices(), and matrix\+\_\+size.
+
+
+\begin{DoxyCode}
+471 \{
+472     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size} = matrices.size();
+473     \textcolor{keywordtype}{size\_t} \hyperlink{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}{matrix\_size} = matrices[0].size();
+474 
+475     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size}; ++i)
+476     \{
+477         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < \hyperlink{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}{matrix\_size}; ++j)
+478         \{
+479             matrices[i][j] = rand() % 2;
+480         \}
+481     \}
+482 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{functions_8cpp_a6ef29583ec524822ced473e1afdae62d}\label{functions_8cpp_a6ef29583ec524822ced473e1afdae62d}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+bitset@{print\+\_\+bitset}}
+\index{print\+\_\+bitset@{print\+\_\+bitset}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+bitset()}{print\_bitset()}}
+{\footnotesize\ttfamily void print\+\_\+bitset (\begin{DoxyParamCaption}\item[{const std\+::bitset$<$ 100 $>$ \&}]{bitset }\end{DoxyParamCaption})}
+
+
+
+Definition at line 405 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+406 \{
+407     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < 10; ++j)
+408     \{
+409         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = j * 10; i < j * 10 + 10; ++i)
+410         \{
+411             std::cout << bitset[i] << \textcolor{stringliteral}{" "};
+412         \}
+413         std::cout << std::endl;
+414     \}
+415 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_a44f3755ad3e3372f6a6a80af6320b1eb}\label{functions_8cpp_a44f3755ad3e3372f6a6a80af6320b1eb}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+bitset\+\_\+vector@{print\+\_\+bitset\+\_\+vector}}
+\index{print\+\_\+bitset\+\_\+vector@{print\+\_\+bitset\+\_\+vector}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+bitset\+\_\+vector()}{print\_bitset\_vector()}}
+{\footnotesize\ttfamily void print\+\_\+bitset\+\_\+vector (\begin{DoxyParamCaption}\item[{const std\+::bitset$<$ 100 $>$ \&}]{bitset }\end{DoxyParamCaption})}
+
+
+
+Definition at line 417 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+418 \{
+419     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < bitset.size(); ++j)
+420     \{
+421         std::cout << bitset[j];
+422     \}
+423     std::cout << std::endl;
+424 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_ab4905a023f709c16fbc823f45ce38249}\label{functions_8cpp_ab4905a023f709c16fbc823f45ce38249}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+duplicates@{print\+\_\+duplicates}}
+\index{print\+\_\+duplicates@{print\+\_\+duplicates}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+duplicates()}{print\_duplicates()}}
+{\footnotesize\ttfamily void print\+\_\+duplicates (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$$>$ \&}]{duplicates,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 354 of file functions.\+cpp.
+
+
+
+References duplicates.
+
+
+\begin{DoxyCode}
+356 \{
+357     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < duplicates.size(); ++i)
+358     \{
+359         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < duplicates[0].size(); ++j)
+360         \{
+361             \textcolor{keywordflow}{if} (j == 1)
+362             \{
+363                 std::cout << \textcolor{stringliteral}{"dictionary["} << duplicates[i][j] << \textcolor{stringliteral}{"] = "} << dictionary[duplicates[i][j]] <<
+       \textcolor{stringliteral}{" "};
+364             \}
+365             \textcolor{keywordflow}{else}
+366             \{
+367                 std::cout << duplicates[i][j] << \textcolor{stringliteral}{" "};
+368             \}
+369 
+370         \}
+371         std::cout << std::endl;
+372     \}
+373 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_ab82a88a72180e73417bd67636c93c42a}\label{functions_8cpp_ab82a88a72180e73417bd67636c93c42a}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+hash\+\_\+table@{print\+\_\+hash\+\_\+table}}
+\index{print\+\_\+hash\+\_\+table@{print\+\_\+hash\+\_\+table}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+hash\+\_\+table()}{print\_hash\_table()}}
+{\footnotesize\ttfamily void print\+\_\+hash\+\_\+table (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$$>$ \&}]{hash\+\_\+table,  }\item[{size\+\_\+t}]{begin,  }\item[{size\+\_\+t}]{end }\end{DoxyParamCaption})}
+
+
+
+Definition at line 345 of file functions.\+cpp.
+
+
+
+References hash\+\_\+table().
+
+
+\begin{DoxyCode}
+346 \{
+347     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = begin; i < end; ++i)
+348     \{
+349         \textcolor{comment}{//std::cout << "hash = " << hash\_table[i].first << "  index = " << hash\_table[i].second <<
+       std::endl;}
+350         std::cout << hash\_table[i].first << \textcolor{stringliteral}{" "} << hash\_table[i].second << std::endl;
+351     \}
+352 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{functions_8cpp_a6c972752b24c089c02b2cbabbfeaf0aa}\label{functions_8cpp_a6c972752b24c089c02b2cbabbfeaf0aa}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+matrix@{print\+\_\+matrix}}
+\index{print\+\_\+matrix@{print\+\_\+matrix}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+matrix()}{print\_matrix()}}
+{\footnotesize\ttfamily void print\+\_\+matrix (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Definition at line 375 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+376 \{
+377     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < 10; ++j)
+378     \{
+379         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = j * 10; i < j * 10 + 10; ++i)
+380         \{
+381             std::cout << matrix[i] << \textcolor{stringliteral}{" "};
+382         \}
+383         std::cout << std::endl;
+384     \}
+385 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_ac2abf70b2a28033630e3294656126151}\label{functions_8cpp_ac2abf70b2a28033630e3294656126151}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+vector@{print\+\_\+vector}}
+\index{print\+\_\+vector@{print\+\_\+vector}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+vector()}{print\_vector()}}
+{\footnotesize\ttfamily void print\+\_\+vector (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Definition at line 396 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+397 \{
+398     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < vector.size(); ++i)
+399     \{
+400         std::cout << vector[i];
+401     \}
+402     std::cout << std::endl;
+403 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_af117b4f34c0df6b1f2ecad301d3a0b07}\label{functions_8cpp_af117b4f34c0df6b1f2ecad301d3a0b07}} 
+\index{functions.\+cpp@{functions.\+cpp}!print\+\_\+words@{print\+\_\+words}}
+\index{print\+\_\+words@{print\+\_\+words}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+words()}{print\_words()}}
+{\footnotesize\ttfamily void print\+\_\+words (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 387 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+388 \{
+389     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < dictionary.size(); ++i)
+390     \{
+391         std::cout << dictionary[i] << std::endl;
+392     \}
+393     std::cout << std::endl;
+394 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_a321c9c67e522b8c2f10487e4285f6f66}\label{functions_8cpp_a321c9c67e522b8c2f10487e4285f6f66}} 
+\index{functions.\+cpp@{functions.\+cpp}!read\+\_\+dict\+\_\+from\+\_\+file@{read\+\_\+dict\+\_\+from\+\_\+file}}
+\index{read\+\_\+dict\+\_\+from\+\_\+file@{read\+\_\+dict\+\_\+from\+\_\+file}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{read\+\_\+dict\+\_\+from\+\_\+file()}{read\_dict\_from\_file()}}
+{\footnotesize\ttfamily void read\+\_\+dict\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dictionary\+\_\+filename,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+reading dictionary from file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary\+\_\+filename} & -\/ the filename that need to be read \\
+\hline
+{\em dictionary} & -\/ contain all words in the file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 56 of file functions.\+cpp.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+57 \{
+58     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+59     std::ifstream file(\hyperlink{unit__tests_8cpp_a07994a2cff826e3e1dadfcacfc3a6c34}{dictionary\_filename});
+60     \textcolor{keywordtype}{size\_t} counter = 0;
+61     \textcolor{keywordflow}{if} (file.is\_open())
+62     \{
+63         std::string line;
+64         \textcolor{keywordtype}{size\_t} i = 0;
+65         \textcolor{keywordflow}{while} (std::getline(file, line))
+66         \{
+67             dictionary[i++] = line;
+68             counter++;
+69         \}
+70         dictionary.resize(counter);
+71         file.close();
+72     \}
+73     \textcolor{keywordflow}{else}
+74     \{
+75         BOOST\_LOG\_TRIVIAL(error) << \textcolor{stringliteral}{"Couldn't open "} << \hyperlink{unit__tests_8cpp_a07994a2cff826e3e1dadfcacfc3a6c34}{dictionary\_filename} << \textcolor{stringliteral}{" for
+       reading"};
+76         std::cerr << \textcolor{stringliteral}{"Couldn't open "} << \hyperlink{unit__tests_8cpp_a07994a2cff826e3e1dadfcacfc3a6c34}{dictionary\_filename} << \textcolor{stringliteral}{" for reading\(\backslash\)n"};
+77     \}
+78     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+79     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"read\_dict\_from\_file()  "}
+80         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+81 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{functions_8cpp_acf60c5afe7fc9c288fe822c89658c717}\label{functions_8cpp_acf60c5afe7fc9c288fe822c89658c717}} 
+\index{functions.\+cpp@{functions.\+cpp}!read\+\_\+from\+\_\+file@{read\+\_\+from\+\_\+file}}
+\index{read\+\_\+from\+\_\+file@{read\+\_\+from\+\_\+file}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{read\+\_\+from\+\_\+file()}{read\_from\_file()}}
+{\footnotesize\ttfamily void read\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text\+\_\+filename,  }\item[{std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Definition at line 484 of file functions.\+cpp.
+
+
+\begin{DoxyCode}
+485 \{
+486     std::ifstream file(\hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\_filename});
+487     \textcolor{keywordflow}{if} (file.is\_open())
+488     \{
+489         std::string line;
+490         \textcolor{keywordflow}{while} (std::getline(file, line))
+491         \{
+492             \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text} += line;
+493             \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text} += \textcolor{stringliteral}{" "};
+494         \}
+495         file.close();
+496     \}
+497     \textcolor{keywordflow}{else}
+498     \{
+499         std::cerr << \textcolor{stringliteral}{"Couldn't open "} << \textcolor{stringliteral}{"text.txt"} << \textcolor{stringliteral}{" for reading\(\backslash\)n"};
+500     \}
+501 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{functions_8cpp_abcc4850712656eae12ab9ef71201cc4b}\label{functions_8cpp_abcc4850712656eae12ab9ef71201cc4b}} 
+\index{functions.\+cpp@{functions.\+cpp}!read\+\_\+text\+\_\+from\+\_\+file@{read\+\_\+text\+\_\+from\+\_\+file}}
+\index{read\+\_\+text\+\_\+from\+\_\+file@{read\+\_\+text\+\_\+from\+\_\+file}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{read\+\_\+text\+\_\+from\+\_\+file()}{read\_text\_from\_file()}}
+{\footnotesize\ttfamily void read\+\_\+text\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text\+\_\+filename,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{text }\end{DoxyParamCaption})}
+
+
+
+reading input text, stop words from file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+\_\+filename} & -\/ the filename that need to be read \\
+\hline
+{\em text} & -\/ contain all words in the file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 83 of file functions.\+cpp.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+84 \{
+85     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+86     std::ifstream file(\hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\_filename});
+87     \textcolor{keywordflow}{if} (file.is\_open())
+88     \{
+89         std::string line;
+90         \textcolor{keywordtype}{size\_t} i = 0, counter = 0;
+91         \textcolor{keywordflow}{while} (std::getline(file, line))
+92         \{
+93             \textcolor{comment}{//std::cout << line << " " << line.size() << std::endl;}
+94             \textcolor{keywordtype}{size\_t} size = line.size();; 
+95             \textcolor{keywordflow}{if}(line[size - 1] < \textcolor{charliteral}{'A'} || line[size - 1] > \textcolor{charliteral}{'Z'} && 
+96                 line[size - 1] < \textcolor{charliteral}{'a'} || line[size - 1] > \textcolor{charliteral}{'z'})
+97             \{
+98                 line.pop\_back();
+99             \}
+100                 
+101             \textcolor{keywordtype}{char}* str = &line[0];
+102             \textcolor{keywordtype}{char}* pch;
+103             pch = strtok(str, \textcolor{stringliteral}{" ,.-?"});
+104 
+105             \textcolor{comment}{//std::cout << line << " " << line.size() << std::endl;}
+106             
+107             \textcolor{keywordflow}{while} (pch != NULL)
+108             \{
+109                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < strlen(pch); j++)
+110                 \{
+111                     \textcolor{keywordflow}{if} (pch[j] >= 65 && pch[j] <= 92)
+112                     \{
+113                         pch[j] = pch[j] + 32;
+114                     \}
+115                 \}
+116                 \textcolor{comment}{//std::cout << pch << " " << strlen(pch) << std::endl;}
+117                 text[i++] = pch;
+118                 pch = strtok(NULL, \textcolor{stringliteral}{" ,.-?"});
+119                 counter++;
+120             \}           
+121         \}
+122         text.resize(counter);
+123         file.close();
+124     \}
+125     \textcolor{keywordflow}{else}
+126     \{
+127         BOOST\_LOG\_TRIVIAL(error) << \textcolor{stringliteral}{"Couldn't open "} << \hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\_filename} << \textcolor{stringliteral}{" for reading"};
+128         std::cerr << \textcolor{stringliteral}{"Couldn't open "} << \hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\_filename} << \textcolor{stringliteral}{" for reading\(\backslash\)n"};
+129     \}
+130 
+131     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+132     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"read\_from\_text\_file()  "}
+133         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+134 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{functions_8cpp_a4a824c898b9d4a6b51237f1ecd3c0d72}\label{functions_8cpp_a4a824c898b9d4a6b51237f1ecd3c0d72}} 
+\index{functions.\+cpp@{functions.\+cpp}!search\+\_\+and\+\_\+calculate\+\_\+matrices@{search\+\_\+and\+\_\+calculate\+\_\+matrices}}
+\index{search\+\_\+and\+\_\+calculate\+\_\+matrices@{search\+\_\+and\+\_\+calculate\+\_\+matrices}!functions.\+cpp@{functions.\+cpp}}
+\subsubsection{\texorpdfstring{search\+\_\+and\+\_\+calculate\+\_\+matrices()}{search\_and\_calculate\_matrices()}}
+{\footnotesize\ttfamily void search\+\_\+and\+\_\+calculate\+\_\+matrices (\begin{DoxyParamCaption}\item[{std\+::bitset$<$ 100 $>$ \&}]{output,  }\item[{std\+::map$<$ std\+::string, size\+\_\+t $>$ \&}]{words\+\_\+count,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{text\+\_\+single\+\_\+term\+\_\+hashes,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{text\+\_\+double\+\_\+term\+\_\+hashes,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{text\+\_\+triple\+\_\+term\+\_\+hashes,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{stop\+\_\+words\+\_\+hashes,  }\item[{const std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$$>$ \&}]{hash\+\_\+table,  }\item[{const std\+::vector$<$ std\+::bitset$<$ 100 $>$$>$ \&}]{matrices,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+correcting input text hashes, maybe there are duplicates 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & -\/ the result of the program, score of the sentence \\
+\hline
+{\em text\+\_\+single\+\_\+term\+\_\+hashes} & -\/ hash of text, contain hashed strings of each word in text \\
+\hline
+{\em text\+\_\+double\+\_\+term\+\_\+hashes} & -\/ hash of text, contain hashed strings of each double combination of words in text \\
+\hline
+{\em stop\+\_\+words\+\_\+hashes} & -\/ contain all hashes of stop words \\
+\hline
+{\em hash\+\_\+table} & -\/ hash table contain hashes and indexes to the words in dictionary \\
+\hline
+{\em matrices} & -\/ vector of bitsets, contain all initialized matrices of length 100 \\
+\hline
+{\em dictionary} & -\/ conatin all words in dictionary.\+txt \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 255 of file functions.\+cpp.
+
+
+
+References dict\+\_\+size, hash\+\_\+table(), matrices(), matrix\+\_\+size, text\+\_\+double\+\_\+term\+\_\+hashes(), text\+\_\+single\+\_\+term\+\_\+hashes(), text\+\_\+size, and text\+\_\+triple\+\_\+term\+\_\+hashes().
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and main().
+
+
+\begin{DoxyCode}
+264 \{
+265     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+266     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4d97bea555c903d47be884ea10dcd77a}{text\_size} = text\_single\_term\_hashes.size();
+267     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size} = dictionary.size();
+268     \textcolor{keywordtype}{size\_t} \hyperlink{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}{matrix\_size} = output.size();
+269     std::vector<size\_t> indexes(text\_size);
+270     std::vector<const std::vector<size\_t>*> terms(3);
+271     terms[0] = &\hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\_single\_term\_hashes};
+272     terms[1] = &\hyperlink{unit__tests_8cpp_adc8040ff5013b6062f2f6889fa639f86}{text\_double\_term\_hashes};
+273     terms[2] = &\hyperlink{unit__tests_8cpp_a0528581581836f462ed3f5733654b32b}{text\_triple\_term\_hashes};
+274     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} k = 3; k > 0; --k)
+275     \{
+276         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < text\_size - k + 1; ++i)
+277         \{
+278             \textcolor{keywordtype}{bool} b = \textcolor{keyword}{true};
+279             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} l = 0; l < k; ++l)
+280             \{
+281                 \textcolor{keywordflow}{if} (indexes[i + l])
+282                 \{
+283                     b = \textcolor{keyword}{false};
+284                 \}
+285             \}
+286             \textcolor{keywordflow}{if}(k == 1)
+287             \{
+288                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} l = 0; l < stop\_words\_hashes.size(); ++l)
+289                 \{
+290                     \textcolor{keywordflow}{if} (stop\_words\_hashes[l] == (*terms[0])[i])
+291                     \{
+292                         indexes[i] = 1;
+293                         b = \textcolor{keyword}{false};
+294                     \}
+295                 \}
+296             \}
+297             \textcolor{keywordflow}{if} (b)
+298             \{
+299                 \textcolor{keywordtype}{size\_t} index = ((*terms[k - 1])[i]) % \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size};
+300                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size}; ++j)
+301                 \{
+302                     \textcolor{keywordflow}{if} (hash\_table[index].first == ((*terms[k - 1])[i]))
+303                     \{   
+304                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} l = 0; l < k; ++l)
+305                         \{
+306                             indexes[i + l] = 1;
+307                         \}
+308                         output |= matrices[hash\_table[index].second];
+309                         \textcolor{keywordtype}{size\_t}& value = words\_count[dictionary[hash\_table[index].second]];
+310                         value? value++ : value = 1; 
+311                         \textcolor{keywordflow}{break};
+312                     \}
+313                     \textcolor{keywordflow}{else}
+314                     \{
+315                         index = (index + 1) % dict\_size;
+316                     \}
+317                 \}
+318             \}
+319         \}
+320     \}
+321 
+322     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+323     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"search\_and\_calculate\_matrices()  "}
+324         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+325 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15

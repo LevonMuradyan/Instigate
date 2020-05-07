@@ -1,0 +1,201 @@
+\hypertarget{main_8cpp}{}\section{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.\+cpp@{src/main.\+cpp}}
+{\ttfamily \#include \char`\"{}functions.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$boost/log/trivial.\+hpp$>$}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{main_8cpp_a23395f78cd8880dae5b70abb9a44b63d}{max\+\_\+dict\+\_\+size}~500000
+\item 
+\#define \hyperlink{main_8cpp_ae1c3c8df719bd1612c1702099c64f7e0}{max\+\_\+term\+\_\+size}~20000
+\item 
+\#define \hyperlink{main_8cpp_a4d16770a1e39a139f1798314521a9de3}{max\+\_\+stop\+\_\+words\+\_\+size}~200
+\item 
+\#define \hyperlink{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}{matrix\+\_\+size}~100
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}\label{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}} 
+\index{main.\+cpp@{main.\+cpp}!matrix\+\_\+size@{matrix\+\_\+size}}
+\index{matrix\+\_\+size@{matrix\+\_\+size}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{matrix\+\_\+size}{matrix\_size}}
+{\footnotesize\ttfamily \#define matrix\+\_\+size~100}
+
+
+
+Definition at line 15 of file main.\+cpp.
+
+
+
+Referenced by init\+\_\+random\+\_\+matrices(), main(), and search\+\_\+and\+\_\+calculate\+\_\+matrices().
+
+\mbox{\Hypertarget{main_8cpp_a23395f78cd8880dae5b70abb9a44b63d}\label{main_8cpp_a23395f78cd8880dae5b70abb9a44b63d}} 
+\index{main.\+cpp@{main.\+cpp}!max\+\_\+dict\+\_\+size@{max\+\_\+dict\+\_\+size}}
+\index{max\+\_\+dict\+\_\+size@{max\+\_\+dict\+\_\+size}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{max\+\_\+dict\+\_\+size}{max\_dict\_size}}
+{\footnotesize\ttfamily \#define max\+\_\+dict\+\_\+size~500000}
+
+
+
+Definition at line 12 of file main.\+cpp.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{main_8cpp_a4d16770a1e39a139f1798314521a9de3}\label{main_8cpp_a4d16770a1e39a139f1798314521a9de3}} 
+\index{main.\+cpp@{main.\+cpp}!max\+\_\+stop\+\_\+words\+\_\+size@{max\+\_\+stop\+\_\+words\+\_\+size}}
+\index{max\+\_\+stop\+\_\+words\+\_\+size@{max\+\_\+stop\+\_\+words\+\_\+size}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{max\+\_\+stop\+\_\+words\+\_\+size}{max\_stop\_words\_size}}
+{\footnotesize\ttfamily \#define max\+\_\+stop\+\_\+words\+\_\+size~200}
+
+
+
+Definition at line 14 of file main.\+cpp.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{main_8cpp_ae1c3c8df719bd1612c1702099c64f7e0}\label{main_8cpp_ae1c3c8df719bd1612c1702099c64f7e0}} 
+\index{main.\+cpp@{main.\+cpp}!max\+\_\+term\+\_\+size@{max\+\_\+term\+\_\+size}}
+\index{max\+\_\+term\+\_\+size@{max\+\_\+term\+\_\+size}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{max\+\_\+term\+\_\+size}{max\_term\_size}}
+{\footnotesize\ttfamily \#define max\+\_\+term\+\_\+size~20000}
+
+
+
+Definition at line 13 of file main.\+cpp.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file main.\+cpp.
+
+
+
+References correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates(), correct\+\_\+text\+\_\+hashes(), dict\+\_\+hashes(), dict\+\_\+size, dictionary(), dictionary\+\_\+filename, duplicates, duplicates\+\_\+size, extract\+\_\+words\+\_\+count(), hash\+\_\+function(), hash\+\_\+table(), hasher, init\+\_\+hashes(), init\+\_\+logging(), init\+\_\+random\+\_\+matrices(), matrices(), matrix\+\_\+size, max\+\_\+dict\+\_\+size, max\+\_\+stop\+\_\+words\+\_\+size, max\+\_\+term\+\_\+size, output(), read\+\_\+dict\+\_\+from\+\_\+file(), read\+\_\+text\+\_\+from\+\_\+file(), search\+\_\+and\+\_\+calculate\+\_\+matrices(), stop\+\_\+words(), stop\+\_\+words\+\_\+filename, stop\+\_\+words\+\_\+hashes(), stop\+\_\+words\+\_\+size, text(), text\+\_\+double\+\_\+term\+\_\+hashes(), text\+\_\+filename, text\+\_\+single\+\_\+term\+\_\+hashes(), text\+\_\+size, text\+\_\+triple\+\_\+term\+\_\+hashes(), and words\+\_\+count.
+
+
+\begin{DoxyCode}
+18 \{
+19     \hyperlink{functions_8cpp_ad8bf2ebe714bdb6a1e216ed7d9efa7a3}{init\_logging}();
+20     
+21     \textcolor{keyword}{auto} start = std::chrono::steady\_clock::now();
+22     \textcolor{keyword}{const} std::string \hyperlink{unit__tests_8cpp_a07994a2cff826e3e1dadfcacfc3a6c34}{dictionary\_filename} = \textcolor{stringliteral}{"dictionary.txt"};
+23     std::vector<std::string> \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary}(\hyperlink{main_8cpp_a23395f78cd8880dae5b70abb9a44b63d}{max\_dict\_size});
+24     \hyperlink{functions_8cpp_a321c9c67e522b8c2f10487e4285f6f66}{read\_dict\_from\_file}(dictionary\_filename, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+25     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size} = \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary}.size();
+26 
+27     \textcolor{keyword}{const} std::string \hyperlink{unit__tests_8cpp_a7bee198d56a809bc4773f8e4d07eb7c0}{text\_filename} = \textcolor{stringliteral}{"text2.txt"}; 
+28     std::vector<std::string> \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text}(\hyperlink{main_8cpp_ae1c3c8df719bd1612c1702099c64f7e0}{max\_term\_size});  
+29     \hyperlink{functions_8cpp_abcc4850712656eae12ab9ef71201cc4b}{read\_text\_from\_file}(text\_filename, \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text});
+30     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_a4d97bea555c903d47be884ea10dcd77a}{text\_size} = \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text}.size();
+31 
+32     \textcolor{keyword}{const} std::string \hyperlink{unit__tests_8cpp_a5678249798b9fb9b94419d6bb89affdd}{stop\_words\_filename} = \textcolor{stringliteral}{"stop\_words.txt"};
+33     std::vector<std::string> \hyperlink{unit__tests_8cpp_aa750abf52c5bf627c7463e74e2abea7a}{stop\_words}(\hyperlink{main_8cpp_a4d16770a1e39a139f1798314521a9de3}{max\_stop\_words\_size});
+34     \hyperlink{functions_8cpp_abcc4850712656eae12ab9ef71201cc4b}{read\_text\_from\_file}(stop\_words\_filename, \hyperlink{unit__tests_8cpp_aa750abf52c5bf627c7463e74e2abea7a}{stop\_words});
+35     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_afa9c59ff318ad04a5c05d6ff45ec1835}{stop\_words\_size} = \hyperlink{unit__tests_8cpp_aa750abf52c5bf627c7463e74e2abea7a}{stop\_words}.size();
+36 
+37     std::hash<std::string> \hyperlink{unit__tests_8cpp_a048651fb762065e42e0b8f9b44373caf}{hasher};
+38     std::vector<std::vector<size\_t>> \hyperlink{unit__tests_8cpp_ae76a3776f5072a97a3ef52324fb549b8}{duplicates};
+39 
+40     std::vector<size\_t> \hyperlink{unit__tests_8cpp_ad49f583adbdd08fcbac8759dc1f4612b}{dict\_hashes}(dict\_size);
+41     \hyperlink{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}{init\_hashes}(\hyperlink{unit__tests_8cpp_ad49f583adbdd08fcbac8759dc1f4612b}{dict\_hashes}, hasher, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+42     \hyperlink{functions_8cpp_aacafc21762cbc40b57fc4c4012558a6b}{correct\_dict\_hashes\_and\_extract\_duplicates}(duplicates,
+      \hyperlink{unit__tests_8cpp_ad49f583adbdd08fcbac8759dc1f4612b}{dict\_hashes});
+43     \textcolor{keywordtype}{size\_t} \hyperlink{unit__tests_8cpp_af062520b3080557b62e84fb7aa73a028}{duplicates\_size} = duplicates.size();
+44     
+45     std::vector<size\_t> \hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\_single\_term\_hashes}(text\_size);
+46     \hyperlink{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}{init\_hashes}(\hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\_single\_term\_hashes}, hasher, 
+      \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text});
+47     \textcolor{keywordflow}{if}(duplicates\_size)
+48     \{
+49         \hyperlink{functions_8cpp_aa0cfb78bb344542605bbea5234600757}{correct\_text\_hashes}(\hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\_single\_term\_hashes}, 
+      \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text}, duplicates, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+50     \}
+51     
+52     std::vector<size\_t> \hyperlink{unit__tests_8cpp_adc8040ff5013b6062f2f6889fa639f86}{text\_double\_term\_hashes}(text\_size - 1);
+53     \hyperlink{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}{init\_hashes}(\hyperlink{unit__tests_8cpp_adc8040ff5013b6062f2f6889fa639f86}{text\_double\_term\_hashes}, hasher, 
+      \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text});
+54     \textcolor{keywordflow}{if}(duplicates\_size)
+55     \{
+56         \hyperlink{functions_8cpp_aa0cfb78bb344542605bbea5234600757}{correct\_text\_hashes}(\hyperlink{unit__tests_8cpp_adc8040ff5013b6062f2f6889fa639f86}{text\_double\_term\_hashes}, 
+      \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text}, duplicates, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+57     \}
+58 
+59     std::vector<size\_t> \hyperlink{unit__tests_8cpp_a0528581581836f462ed3f5733654b32b}{text\_triple\_term\_hashes}(text\_size - 2);
+60     \hyperlink{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}{init\_hashes}(\hyperlink{unit__tests_8cpp_a0528581581836f462ed3f5733654b32b}{text\_triple\_term\_hashes}, hasher, 
+      \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text});
+61     \textcolor{keywordflow}{if}(duplicates\_size)
+62     \{
+63         \hyperlink{functions_8cpp_aa0cfb78bb344542605bbea5234600757}{correct\_text\_hashes}(\hyperlink{unit__tests_8cpp_a0528581581836f462ed3f5733654b32b}{text\_triple\_term\_hashes}, 
+      \hyperlink{unit__tests_8cpp_a56954412c2a8c6970fb4a718981d17b1}{text}, duplicates, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+64     \}
+65 
+66     std::vector<size\_t> \hyperlink{unit__tests_8cpp_ac7f4e93c08d879f3b08ab091dc8bfa85}{stop\_words\_hashes}(stop\_words\_size);
+67     \hyperlink{functions_8cpp_ab21eafddc4219e1b277841a2bd2b77c4}{init\_hashes}(\hyperlink{unit__tests_8cpp_ac7f4e93c08d879f3b08ab091dc8bfa85}{stop\_words\_hashes}, hasher, 
+      \hyperlink{unit__tests_8cpp_aa750abf52c5bf627c7463e74e2abea7a}{stop\_words});
+68     \textcolor{keywordflow}{if}(duplicates\_size)
+69     \{
+70         \hyperlink{functions_8cpp_aa0cfb78bb344542605bbea5234600757}{correct\_text\_hashes}(\hyperlink{unit__tests_8cpp_ac7f4e93c08d879f3b08ab091dc8bfa85}{stop\_words\_hashes}, 
+      \hyperlink{unit__tests_8cpp_aa750abf52c5bf627c7463e74e2abea7a}{stop\_words}, duplicates, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+71     \}
+72     
+73     std::vector<std::bitset<100>> \hyperlink{unit__tests_8cpp_af1bccb24e1ec3f0ac4cf0b2ba66dba10}{matrices}(dict\_size);
+74     \hyperlink{functions_8cpp_ace0d8a491c04e095dfdc122519e95531}{init\_random\_matrices}(\hyperlink{unit__tests_8cpp_af1bccb24e1ec3f0ac4cf0b2ba66dba10}{matrices});
+75 
+76     std::vector<std::pair<size\_t,size\_t>> \hyperlink{unit__tests_8cpp_a47d1ef48124afb3373728ff2e99a1bf0}{hash\_table}(dict\_size);
+77     \hyperlink{functions_8cpp_add7071b5bf6c35ebe7a72c1568efb48a}{hash\_function}(\hyperlink{unit__tests_8cpp_a47d1ef48124afb3373728ff2e99a1bf0}{hash\_table}, \hyperlink{unit__tests_8cpp_ad49f583adbdd08fcbac8759dc1f4612b}{dict\_hashes});
+78 
+79     std::map<std::string, size\_t> \hyperlink{unit__tests_8cpp_ac7d6b29854e89c01f1b2e5dc876306e4}{words\_count};
+80     std::bitset<100> \hyperlink{unit__tests_8cpp_a17862d4ba768df159c2c87deec29808a}{output}(\hyperlink{main_8cpp_a9dbdee41768154d0f1240cc5b2535ccb}{matrix\_size});
+81     \hyperlink{functions_8cpp_a4a824c898b9d4a6b51237f1ecd3c0d72}{search\_and\_calculate\_matrices}(\hyperlink{unit__tests_8cpp_a17862d4ba768df159c2c87deec29808a}{output}, words\_count, 
+      \hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\_single\_term\_hashes}, \hyperlink{unit__tests_8cpp_adc8040ff5013b6062f2f6889fa639f86}{text\_double\_term\_hashes},
+82         \hyperlink{unit__tests_8cpp_a0528581581836f462ed3f5733654b32b}{text\_triple\_term\_hashes}, \hyperlink{unit__tests_8cpp_ac7f4e93c08d879f3b08ab091dc8bfa85}{stop\_words\_hashes}, 
+      \hyperlink{unit__tests_8cpp_a47d1ef48124afb3373728ff2e99a1bf0}{hash\_table}, \hyperlink{unit__tests_8cpp_af1bccb24e1ec3f0ac4cf0b2ba66dba10}{matrices}, \hyperlink{unit__tests_8cpp_a8e62ff9efe3f1871f8d8092954e59d9b}{dictionary});
+83 
+84     \hyperlink{functions_8cpp_acdee8ced740bddc4318c521d54b997c5}{extract\_words\_count}(words\_count);
+85     BOOST\_LOG\_TRIVIAL(info) << \textcolor{stringliteral}{"Dictionary size = "} << \hyperlink{unit__tests_8cpp_a4683daa94f65d362e12472f67fd1fa3e}{dict\_size};
+86     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"Duplicates count = "} << duplicates.size();
+87     BOOST\_LOG\_TRIVIAL(info) << \textcolor{stringliteral}{"Stop words count = "} << \hyperlink{unit__tests_8cpp_aa750abf52c5bf627c7463e74e2abea7a}{stop\_words}.size();
+88     BOOST\_LOG\_TRIVIAL(info) << \textcolor{stringliteral}{"Input words count = "} << \hyperlink{unit__tests_8cpp_adead36abe8d9007ecb96738b781d2b11}{text\_single\_term\_hashes}.
+      size();
+89     BOOST\_LOG\_TRIVIAL(info) << \textcolor{stringliteral}{"The result is = "} << \hyperlink{unit__tests_8cpp_a17862d4ba768df159c2c87deec29808a}{output};
+90 
+91     \textcolor{keyword}{auto} end = std::chrono::steady\_clock::now();
+92     BOOST\_LOG\_TRIVIAL(debug) << \textcolor{stringliteral}{"Elapsed time in milliseconds : "}
+93         << std::chrono::duration\_cast<std::chrono::milliseconds>(end - start).count() << \textcolor{stringliteral}{" ms"};
+94     \textcolor{keywordflow}{return} 0;
+95 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1

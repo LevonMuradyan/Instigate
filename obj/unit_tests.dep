@@ -1,2 +1,0 @@
-obj/unit_tests.dep  obj/unit_tests.o: src/unit_tests.cpp \
- src/functions.hpp

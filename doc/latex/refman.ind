@@ -1,0 +1,209 @@
+\begin{theindex}
+
+  \item {B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+SE}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{20--23}
+  \item {B\+O\+O\+S\+T\+\_\+\+T\+E\+S\+T\+\_\+\+M\+O\+D\+U\+LE}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{19}
+
+  \indexspace
+
+  \item {contains\+\_\+duplicates}
+    \subitem {functions.\+hpp}, \hyperpage{4}
+  \item {contains\+\_\+duplicates\+\_\+h}
+    \subitem {functions.\+hpp}, \hyperpage{5}
+  \item {correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates}
+    \subitem {functions.\+hpp}, \hyperpage{5}
+  \item {correct\+\_\+text\+\_\+hashes}
+    \subitem {functions.\+hpp}, \hyperpage{6}
+
+  \indexspace
+
+  \item {dict\+\_\+hashes}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{24}
+  \item {dict\+\_\+size}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{26}
+  \item {dictionary}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{24}
+  \item {dictionary\+\_\+filename}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{26}
+  \item {duplicates}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{26}
+  \item {duplicates\+\_\+size}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{27}
+
+  \indexspace
+
+  \item {extract\+\_\+words\+\_\+count}
+    \subitem {functions.\+hpp}, \hyperpage{7}
+
+  \indexspace
+
+  \item {functions.\+hpp}
+    \subitem {contains\+\_\+duplicates}, \hyperpage{4}
+    \subitem {contains\+\_\+duplicates\+\_\+h}, \hyperpage{5}
+    \subitem {correct\+\_\+dict\+\_\+hashes\+\_\+and\+\_\+extract\+\_\+duplicates}, 
+		\hyperpage{5}
+    \subitem {correct\+\_\+text\+\_\+hashes}, \hyperpage{6}
+    \subitem {extract\+\_\+words\+\_\+count}, \hyperpage{7}
+    \subitem {hash\+\_\+function}, \hyperpage{7}
+    \subitem {init\+\_\+hashes}, \hyperpage{8}
+    \subitem {init\+\_\+logging}, \hyperpage{9}
+    \subitem {init\+\_\+random\+\_\+matrices}, \hyperpage{9, 10}
+    \subitem {print\+\_\+bitset}, \hyperpage{10}
+    \subitem {print\+\_\+bitset\+\_\+vector}, \hyperpage{10}
+    \subitem {print\+\_\+duplicates}, \hyperpage{11}
+    \subitem {print\+\_\+hash\+\_\+table}, \hyperpage{11}
+    \subitem {print\+\_\+matrix}, \hyperpage{11}
+    \subitem {print\+\_\+vector}, \hyperpage{12}
+    \subitem {print\+\_\+words}, \hyperpage{12}
+    \subitem {read\+\_\+dict\+\_\+from\+\_\+file}, \hyperpage{12}
+    \subitem {read\+\_\+text\+\_\+from\+\_\+file}, \hyperpage{13}
+    \subitem {search\+\_\+and\+\_\+calculate\+\_\+matrices}, 
+		\hyperpage{14}
+    \subitem {write\+\_\+in\+\_\+file}, \hyperpage{15}
+
+  \indexspace
+
+  \item {hash\+\_\+function}
+    \subitem {functions.\+hpp}, \hyperpage{7}
+  \item {hash\+\_\+table}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{24}
+  \item {hasher}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{27}
+
+  \indexspace
+
+  \item {init\+\_\+hashes}
+    \subitem {functions.\+hpp}, \hyperpage{8}
+  \item {init\+\_\+logging}
+    \subitem {functions.\+hpp}, \hyperpage{9}
+  \item {init\+\_\+random\+\_\+matrices}
+    \subitem {functions.\+hpp}, \hyperpage{9, 10}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.\+cpp}, \hyperpage{17}
+  \item {main.\+cpp}
+    \subitem {main}, \hyperpage{17}
+    \subitem {matrix\+\_\+size}, \hyperpage{16}
+    \subitem {max\+\_\+dict\+\_\+size}, \hyperpage{16}
+    \subitem {max\+\_\+stop\+\_\+words\+\_\+size}, \hyperpage{16}
+    \subitem {max\+\_\+term\+\_\+size}, \hyperpage{17}
+  \item {matrices}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{24}
+  \item {matrix\+\_\+size}
+    \subitem {main.\+cpp}, \hyperpage{16}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{20}
+  \item {max\+\_\+dict\+\_\+size}
+    \subitem {main.\+cpp}, \hyperpage{16}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{20}
+  \item {max\+\_\+stop\+\_\+words\+\_\+size}
+    \subitem {main.\+cpp}, \hyperpage{16}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{20}
+  \item {max\+\_\+term\+\_\+size}
+    \subitem {main.\+cpp}, \hyperpage{17}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{20}
+
+  \indexspace
+
+  \item {output}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{25}
+
+  \indexspace
+
+  \item {print\+\_\+bitset}
+    \subitem {functions.\+hpp}, \hyperpage{10}
+  \item {print\+\_\+bitset\+\_\+vector}
+    \subitem {functions.\+hpp}, \hyperpage{10}
+  \item {print\+\_\+duplicates}
+    \subitem {functions.\+hpp}, \hyperpage{11}
+  \item {print\+\_\+hash\+\_\+table}
+    \subitem {functions.\+hpp}, \hyperpage{11}
+  \item {print\+\_\+matrix}
+    \subitem {functions.\+hpp}, \hyperpage{11}
+  \item {print\+\_\+vector}
+    \subitem {functions.\+hpp}, \hyperpage{12}
+  \item {print\+\_\+words}
+    \subitem {functions.\+hpp}, \hyperpage{12}
+
+  \indexspace
+
+  \item {read\+\_\+dict\+\_\+from\+\_\+file}
+    \subitem {functions.\+hpp}, \hyperpage{12}
+  \item {read\+\_\+text\+\_\+from\+\_\+file}
+    \subitem {functions.\+hpp}, \hyperpage{13}
+
+  \indexspace
+
+  \item {search\+\_\+and\+\_\+calculate\+\_\+matrices}
+    \subitem {functions.\+hpp}, \hyperpage{14}
+  \item {src/functions.\+cpp}, \hyperpage{3}
+  \item {src/functions.\+hpp}, \hyperpage{3}
+  \item {src/main.\+cpp}, \hyperpage{16}
+  \item {src/unit\+\_\+tests.\+cpp}, \hyperpage{18}
+  \item {stop\+\_\+words}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{25}
+  \item {stop\+\_\+words\+\_\+filename}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{27}
+  \item {stop\+\_\+words\+\_\+hashes}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{25}
+  \item {stop\+\_\+words\+\_\+size}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{27}
+
+  \indexspace
+
+  \item {text}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{25}
+  \item {text\+\_\+double\+\_\+term\+\_\+hashes}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{25}
+  \item {text\+\_\+filename}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{27}
+  \item {text\+\_\+single\+\_\+term\+\_\+hashes}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{26}
+  \item {text\+\_\+size}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{28}
+  \item {text\+\_\+triple\+\_\+term\+\_\+hashes}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{26}
+
+  \indexspace
+
+  \item {unit\+\_\+tests.\+cpp}
+    \subitem {B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+SE}, 
+		\hyperpage{20--23}
+    \subitem {B\+O\+O\+S\+T\+\_\+\+T\+E\+S\+T\+\_\+\+M\+O\+D\+U\+LE}, 
+		\hyperpage{19}
+    \subitem {dict\+\_\+hashes}, \hyperpage{24}
+    \subitem {dict\+\_\+size}, \hyperpage{26}
+    \subitem {dictionary}, \hyperpage{24}
+    \subitem {dictionary\+\_\+filename}, \hyperpage{26}
+    \subitem {duplicates}, \hyperpage{26}
+    \subitem {duplicates\+\_\+size}, \hyperpage{27}
+    \subitem {hash\+\_\+table}, \hyperpage{24}
+    \subitem {hasher}, \hyperpage{27}
+    \subitem {matrices}, \hyperpage{24}
+    \subitem {matrix\+\_\+size}, \hyperpage{20}
+    \subitem {max\+\_\+dict\+\_\+size}, \hyperpage{20}
+    \subitem {max\+\_\+stop\+\_\+words\+\_\+size}, \hyperpage{20}
+    \subitem {max\+\_\+term\+\_\+size}, \hyperpage{20}
+    \subitem {output}, \hyperpage{25}
+    \subitem {stop\+\_\+words}, \hyperpage{25}
+    \subitem {stop\+\_\+words\+\_\+filename}, \hyperpage{27}
+    \subitem {stop\+\_\+words\+\_\+hashes}, \hyperpage{25}
+    \subitem {stop\+\_\+words\+\_\+size}, \hyperpage{27}
+    \subitem {text}, \hyperpage{25}
+    \subitem {text\+\_\+double\+\_\+term\+\_\+hashes}, \hyperpage{25}
+    \subitem {text\+\_\+filename}, \hyperpage{27}
+    \subitem {text\+\_\+single\+\_\+term\+\_\+hashes}, \hyperpage{26}
+    \subitem {text\+\_\+size}, \hyperpage{28}
+    \subitem {text\+\_\+triple\+\_\+term\+\_\+hashes}, \hyperpage{26}
+    \subitem {words\+\_\+count}, \hyperpage{28}
+
+  \indexspace
+
+  \item {words\+\_\+count}
+    \subitem {unit\+\_\+tests.\+cpp}, \hyperpage{28}
+  \item {write\+\_\+in\+\_\+file}
+    \subitem {functions.\+hpp}, \hyperpage{15}
+
+\end{theindex}
