@@ -22,3 +22,5 @@ help:
 	@echo type make for compiling
 	@echo type make clean for cleaning
 	@echo type make push for fast pushing to repo
+	@echo type make test to build the tests
+	@echo type make prog to build the program
