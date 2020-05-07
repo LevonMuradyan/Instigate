@@ -90,8 +90,7 @@ void read_text_from_file(const std::string& text_filename, std::vector<std::stri
 		size_t i = 0, counter = 0;
 		while (std::getline(file, line))
 		{
-			//std::cout << line << std::endl;
-			//std::cout << line.size() << std::endl;
+			//std::cout << line << " " << line.size() << std::endl;
 			size_t size = line.size();; 
 			if(line[size - 1] < 'A' || line[size - 1] > 'Z' && 
 				line[size - 1] < 'a' || line[size - 1] > 'z')
@@ -103,8 +102,7 @@ void read_text_from_file(const std::string& text_filename, std::vector<std::stri
 			char* pch;
 			pch = strtok(str, " ,.-?");
 
-			//std::cout << line << std::endl;
-			//std::cout << line.size() << std::endl;
+			//std::cout << line << " " << line.size() << std::endl;
 			
 			while (pch != NULL)
 			{
@@ -115,9 +113,7 @@ void read_text_from_file(const std::string& text_filename, std::vector<std::stri
 						pch[j] = pch[j] + 32;
 					}
 				}
-				//std::cout << pch << std::endl;
-				//std::cout << strlen(pch) << std::endl;
-				//std::cout << strlen(pch) << std::endl;
+				//std::cout << pch << " " << strlen(pch) << std::endl;
 				text[i++] = pch;
 				pch = strtok(NULL, " ,.-?");
 				counter++;

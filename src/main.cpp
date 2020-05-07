@@ -24,7 +24,7 @@ int main()
 	read_dict_from_file(dictionary_filename, dictionary);
 	size_t dict_size = dictionary.size();
 
-	const std::string text_filename = "text1.txt";	
+	const std::string text_filename = "text2.txt";	
 	std::vector<std::string> text(max_term_size);	
 	read_text_from_file(text_filename, text);
 	size_t text_size = text.size();
