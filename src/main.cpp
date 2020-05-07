@@ -70,8 +70,10 @@ int main()
 		correct_text_hashes(stop_words_hashes, stop_words, duplicates, dictionary);
 	}
 	
+	const std::string matrices_filename = "matrices.txt";
 	std::vector<std::bitset<100>> matrices(dict_size);
 	init_random_matrices(matrices);
+	write_matrices_in_file(matrices_filename, matrices);
 
 	std::vector<std::pair<size_t,size_t>> hash_table(dict_size);
 	hash_function(hash_table, dict_hashes);

@@ -342,161 +342,26 @@ void extract_words_count(const std::map<std::string, size_t>& m)
 		BOOST_LOG_TRIVIAL(info) << element.first << " :: " << element.second;
 }
 
-void print_hash_table(const std::vector<std::pair<size_t, size_t>>& hash_table, size_t begin, size_t end)
+void write_matrices_in_file(const std::string& matrices_filename,
+	const std::vector<std::bitset<100>>& matrices)
 {
-	for (size_t i = begin; i < end; ++i)
-	{
-		//std::cout << "hash = " << hash_table[i].first << "  index = " << hash_table[i].second << std::endl;
-		std::cout << hash_table[i].first << " " << hash_table[i].second << std::endl;
-	}
-}
-
-void print_duplicates(const std::vector<std::vector<size_t>>& duplicates,
-	const std::vector<std::string>& dictionary)
-{
-	for (int i = 0; i < duplicates.size(); ++i)
-	{
-		for (int j = 0; j < duplicates[0].size(); ++j)
-		{
-			if (j == 1)
-			{
-				std::cout << "dictionary[" << duplicates[i][j] << "] = " << dictionary[duplicates[i][j]] << " ";
-			}
-			else
-			{
-				std::cout << duplicates[i][j] << " ";
-			}
-
-		}
-		std::cout << std::endl;
-	}
-}
-
-void print_matrix(const std::vector<size_t>& matrix)
-{
-	for (size_t j = 0; j < 10; ++j)
-	{
-		for (size_t i = j * 10; i < j * 10 + 10; ++i)
-		{
-			std::cout << matrix[i] << " ";
-		}
-		std::cout << std::endl;
-	}
-}
-
-void print_words(const std::vector<std::string>& dictionary)
-{
-	for (size_t i = 0; i < dictionary.size(); ++i)
-	{
-		std::cout << dictionary[i] << std::endl;
-	}
-	std::cout << std::endl;
-}
-
-void print_vector(const std::vector<size_t>& vector)
-{
-	for (size_t i = 0; i < vector.size(); ++i)
-	{
-		std::cout << vector[i];
-	}
-	std::cout << std::endl;
-}
-
-void print_bitset(const std::bitset<100>& bitset)
-{
-	for (size_t j = 0; j < 10; ++j)
-	{
-		for (size_t i = j * 10; i < j * 10 + 10; ++i)
-		{
-			std::cout << bitset[i] << " ";
-		}
-		std::cout << std::endl;
-	}
-}
-
-void print_bitset_vector(const std::bitset<100>& bitset)
-{
-	for (size_t j = 0; j < bitset.size(); ++j)
-	{
-		std::cout << bitset[j];
-	}
-	std::cout << std::endl;
-}
-
-bool contains_duplicates(std::vector<size_t> a)
-{
-	if (a.size() < 2)
-	{
-		return false;
-	}
-	sort(a.begin(), a.end());
-	//std::cout << a[a.size() - 1] << std::endl;
-	//std::cout << a[0] << std::endl;
-	for (int i = 0; i < a.size() - 1; i++)
-	{
-		if (a[i] == a[i + 1])
-		{
-			std::cout << a[i] << std::endl;
-		}
-	}
-	return false;
-}
-
-bool contains_duplicates_h(std::vector<size_t> a)
-{
-	if (a.size() < 2)
-	{
-		return false;
-	}
-
-	for (int i = 0; i < a.size() - 1; i++)
-	{
-		a[i] = a[i] % a.size();
-	}
-
-	sort(a.begin(), a.end());
-	//std::cout << a[a.size() - 1] << std::endl;
-	//std::cout << a[0] << std::endl;
-	for (int i = 0; i < a.size() - 1; i++)
-	{
-		if (a[i] == a[i + 1])
-		{
-			std::cout << a[i] << std::endl;
-		}
-	}
-	return false;
-}
-
-void init_random_matrices(std::vector<std::vector<size_t>>& matrices)
-{
-	size_t dict_size = matrices.size();
-	size_t matrix_size = matrices[0].size();
-
-	for (size_t i = 0; i < dict_size; ++i)
-	{
-		for (size_t j = 0; j < matrix_size; ++j)
-		{
-			matrices[i][j] = rand() % 2;
-		}
-	}
-}
-
-void read_from_file(const std::string& text_filename, std::string& text)
-{
-	std::ifstream file(text_filename);
+	auto start = std::chrono::steady_clock::now();
+	std::ofstream file(matrices_filename);
 	if (file.is_open())
 	{
-		std::string line;
-		while (std::getline(file, line))
+		for(size_t i = 0; i < matrices.size(); ++i)
 		{
-			text += line;
-			text += " ";
+			std::string s = matrices[i].to_string();
+			file << s << "\n";
 		}
 		file.close();
 	}
 	else
 	{
-		std::cerr << "Couldn't open " << "text.txt" << " for reading\n";
+		BOOST_LOG_TRIVIAL(error) << "Couldn't open " << matrices_filename << " for writing";
+		std::cerr << "Couldn't open " << matrices_filename << " for writing\n";
 	}
+	auto end = std::chrono::steady_clock::now();
+	BOOST_LOG_TRIVIAL(debug) << "write_matrices_in_file()  "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms";
 }
-
